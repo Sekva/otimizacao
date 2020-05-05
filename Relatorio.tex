@@ -1,0 +1,76 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Documento Principal Geometria Analítica
+% Gersonilo Oliveira da Silva
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \documentclass [a4paper,12pt,brazil]{book}
+    \usepackage[utf8]{inputenc}
+    \usepackage{multicol}
+    \usepackage[brazil]{babel}
+    \usepackage{amssymb,amscd,latexsym}
+    \usepackage{amsmath}
+    \usepackage{color}
+    \usepackage{epsfig}
+    %\usepackage[dvips]{graphicx}
+    %\usepackage{srcltx}
+
+    \setlength{\oddsidemargin}{0.46cm}
+    \setlength{\textwidth}{15cm}
+    \setlength{\topmargin}{-0.79cm}
+    \setlength{\headheight}{0.75cm}
+    \setlength{\headsep}{0.50cm}
+    \setlength{\textheight}{24cm}
+    \setlength{\parindent}{1.0cm}
+    \renewcommand{\baselinestretch}{1.1}
+    \pagenumbering{arabic} \setcounter{page}{6}
+%    \setlength{\parskip}{0.2 cm}
+
+%    \newtheorem {teorema}{Teorema}[chapter]
+%    \newtheorem {proposicao}[teorema]{Proposição}
+%    \newtheorem {lema}[teorema]{Lema}
+%    \newtheorem {definicao}[teorema]{Definição}
+
+    \newcommand {\cqd}{\hfill $\blacksquare$ \vspace{0.5cm}}
+
+    \pagestyle{headings}
+    \newtheorem{theorem}{Teorema}[chapter]
+    \newtheorem{acknowledgement}[theorem]{Acknowledgement}
+    \newtheorem{algorithm}[theorem]{Afirmação}
+    \newtheorem{axiom}[theorem]{Axioma}
+    \newtheorem{case}[theorem]{Case}
+    \newtheorem{claim}[theorem]{Claim}
+    \newtheorem{conclusion}[theorem]{Conclusion}
+    \newtheorem{condition}[theorem]{Condition}
+    \newtheorem{conjecture}[theorem]{Conjectura}
+    \newtheorem{corollary}[theorem]{Corolário}
+    \newtheorem{criterion}[theorem]{Criterion}
+    \newtheorem{definition}[theorem]{Definição}
+    \newtheorem{example}{Exemplo}
+    \newtheorem{exercise}[theorem]{Exercício}
+    \newtheorem{lemma}{Lema}[chapter]
+    \newtheorem{notation}[theorem]{Notation}
+    \newtheorem{problem}[theorem]{Problem}
+    \newtheorem{proposition}[theorem]{Proposição}
+    \newtheorem{remark}{Observação}[chapter]
+    \newtheorem{solution}[theorem]{Solution}
+    \newtheorem{summary}[theorem]{Summary}
+    \newenvironment{proof}[1][\textbf{Demonstração:}\hspace{0.2cm}]{\textit{#1}}{\begin{flushright}\itshape{QED.}\end{flushright}}
+    
+
+%\includeonly{ApendiceA}
+
+
+\begin{document}
+
+\pagestyle{headings}
+\include{Capa(Relatorio)}
+\renewcommand{\baselinestretch}{1.0} \thispagestyle{plain}\pagenumbering{arabic} \tableofcontents
+\include{Introducao(Relatorio)}
+\include{Capitulo1(Relatorio)}
+\include{Capitulo2(Relatorio)}
+\include{Capitulo3(Relatorio)}
+\include{Capitulo4(Relatorio)}
+\include{Capitulo5(Relatorio)}
+\include{Refer(Relatorio)}
+
+\end{document}
