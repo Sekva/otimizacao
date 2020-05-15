@@ -1,3 +1,6 @@
 *.log
 *.toc
 *.aux
+saida/*.log
+saida/*.toc
+saida/*.aux
