@@ -1,0 +1,25 @@
+\begin{lstlisting}[caption=Método de Newton 1 variavel]
+pub fn newton1x1<F>(funcao_derivada: &F, x: f64) -> (usize, f64)
+where
+    F: Fn(f64) -> f64,
+{
+    let mut entrada_atual = x;
+    let maximo_iteracoes = 100;
+
+    for iteracao_atual in 1..=maximo_iteracoes {
+        let diferenca: f64 =
+            funcao_derivada(entrada_atual.clone())
+            /
+            derive1x1(&funcao_derivada, &entrada_atual);
+
+        println!("diferenca: {}", diferenca);
+        entrada_atual -= diferenca;
+
+        if diferenca.abs() < 0.0000001 {
+            return (iteracao_atual, entrada_atual);
+        }
+    }
+
+    return (maximo_iteracoes, entrada_atual);
+}
+\end{lstlisting}
