@@ -21,7 +21,7 @@ busca-se valores pertencentes ao conjunto \textit{A} (que pode ter
 restrições), com o objetivo de encontrar uma solução ótima, aplicando os valores
 de \textit{A} em numa função objetivo predefinida.
 
-Podendo assim, serem representadas da seguinte forma:
+Podendo assim, ser representada da seguinte forma:
 
     Dada a função
         \begin{equation}
@@ -47,7 +47,7 @@ Podendo assim, serem representadas da seguinte forma:
                 busca pelo elemento \(x_0 \in A\), que satisfaz:
 
                     \begin{equation}
-                        (x_0) \leq f(x);
+                        f(x_0) \leq f(x);
                     \end{equation}
 
                 para todo \(x \in A\).
@@ -55,14 +55,14 @@ Podendo assim, serem representadas da seguinte forma:
 \vspace{\baselineskip}
 Com isso, podemos agora entender como esse processo pode ser custoso. Iniciando
 com fato de que existem os pontos máximos e mínimos (pontos críticos), locais
-e globais no espaço das funções. Sendo os pontos críticos locais, aqueles que
+e globais, no espaço das funções. Sendo os pontos críticos locais, aqueles que
 não são os menores ou maiores valores para a minimização e maximização,
 respectivamente. E os pontos globais, aqueles que representam o menor ou maior
-valor no espaço da função, para a minimização e maximização, respectivamente.
+valor no espaço das funções, para a minimização e maximização, respectivamente.
 
 Criando assim, uma certa incerteza ao encontrar um valor crítico numa função,
 já que é estritamente difícil saber se o ponto crítico encontrado é local ou
-global.Como pode-se perceber na Figura
+global. Como pode-se perceber na Figura
 \ref{grafico_local_global_pontosCriticos}.
 
 
@@ -76,13 +76,13 @@ global.Como pode-se perceber na Figura
 \end{figure}
 
 
-\section{{Otimização de Funções à Uma variável real}}
+\section{{Otimização de Funções à Uma Variável Real}}
 
 \hspace{0.8cm}
 
 Evidente que funções possuem as variáveis dependentes (a qual representa o
 objeto da otimização) e variáveis independentes (cujo suas grandezas podem ser
-selecionadas), podemos denotar que, para a função
+selecionadas), podemos denotar que, para a equação
 
 \begin{equation}
 	y = f(x),
@@ -96,29 +96,29 @@ recurso para encontrar o os pontos críticos. E nesse sentindo, pode-se utilizar
 a técnica de \textbf{derivação}, donde, oferece como recurso a possibilidade de
 identificar tais pontos.
 
-A derivada, é a representação da taxa de variação de uma função em relação a
-um ponto da mesma. A partir dai podemos observar um fato interessante sobre
-minimos e maximos. Observando, por exemplo,o caso do maximo, que quando a função
-está num maximo, existem duas possibilidades, a primeira sendo que a função para
-de crescer e a partir dai ela se torna indefinida, e a segunda possibilidade
-quando a função para de crescer e começa a decrescer. De toda forma a função
-para de crescer, e por definição, quando a derivada (taxa de variação) é
-positiva, a função cresce, e quando negativa a função decresce. Dai podemos
-concluir que quando a derivada representando a taxa de variação é zero,a função
-ou para de crescer ou de decrescer, sendo assim um ponto de maximo ou de minimo.
+A derivada é a representação da taxa de variação de uma função, em relação a
+um ponto. A partir daí, podemos observar um fator interessante; por exemplo,
+quando a função está num ponto máximo, existem duas possibilidades, a primeira,
+sendo a função parando de crescer e em seguinda se tornando indefinida; e a
+segunda possibilidade quando a função para de crescer e começa a decrescer.
+Com isso, é importante ressaltar que por definição, quando a derivada (taxa de
+variação) em um ponto é positiva, a função cresce, e quando negativa a função
+decresce. Conclui-se que, quando a derivada que representa a taxa de variação é
+zero, a função ou para de crescer ou de decrescer, sendo assim um
+ponto de máximo ou de mínimo.
 
-Com o uso da derivada, podemos pensar num metodo de otimização bastante simples,
+Com o uso da derivada, podemos pensar num método de otimização bastante simples,
 considerando \(f(x)\) a função que queremos otimizar e \(f'(x)\) sua função
-derivada, podemos dizer que o conjunto $O$ possui todos os otimos locais ou não
-de \(f(x)\):
+derivada, podemos dizer que o conjunto $O$ possui todos os ótimos locais e
+globais de \(f(x)\):
 
 \begin{equation}
-    O := \{x | f'(x) = 0\}
+    O := \{f(x) | f'(x) = 0\}
 \end{equation}
 
 
-Portanto, aplicando um filtro em $O$ para obeter o maximo e minimo do conjunto,
-acabamos por obeter o maximo e minimo de \(f(x)\):
+Portanto, aplicando um filtro em $O$ para obeter o máximo e mínimo do conjunto,
+acabamos por obeter o máximo e mínimo de \(f(x)\):
 
 
 \begin{equation}
@@ -130,14 +130,14 @@ acabamos por obeter o maximo e minimo de \(f(x)\):
 \end{equation}
 
 
-Mas então podemos perceber dois problemas, determinar como encontrar os pontos
-onde a derivada se anule, e determinar se temos de fato todos os pontos.
+Então podemos perceber dois problemas, determinar como encontrar os pontos onde
+a derivada se anule, e determinar se temos de fato todos os pontos.
 
-Determinar se temos todos os pontos criticos (pontos em que a derivida se anula)
-é um problema que podemos adiar por agora. Já encontrar os pontos pontos
-criticos não é tão dificil, considerando boas aproximações.
+Desconsiderando por agora o problema de determinar se tem-se todos os pontos
+críticos. Vamos considerar então o problema de encontrar os pontos críticos,
+levando em conta boas aproximações.
 
-O Método de Newton nos diz que uma sequencia \(\{x_k\}\) converge para o minimo
+O Método de Newton nos diz que uma sequência \(\{x_k\}\) converge para o mínimo
 de \(f(x)\):
 
 \begin{equation}
@@ -145,7 +145,7 @@ de \(f(x)\):
 \end{equation}
 
 O que este método faz de fato é encontrar zeros de uma função \(g(x)\) a partir
-da mesma sequencia \(\{x_k\}\), afim de que \(x_k\) converga para uma entrada
+da mesma sequência \(\{x_k\}\), afim de que \(x_k\) converga para uma entrada
 \(x^*\) de \(g(x)\), tal que a mesma se anule:
 
 \begin{equation}
@@ -160,8 +160,8 @@ da mesma sequencia \(\{x_k\}\), afim de que \(x_k\) converga para uma entrada
 Com isso temos um método que minimiza uma função que pode ser derivada duas
 vezes (caso não possa, aproximações de suas primeiras e segundas derivadas
 podem ser boas o suficiente) a partir de um valor de entrada. O método é
-simples, entrega muitas vezes otimos locais proximos ao ponto inicial, mas tem
-seu destaque pode ser curto e facilmente computavel.
+simples, entrega muitas vezes ótimos locais próximos ao ponto inicial, mas tem
+seu destaque pode ser curto e facilmente computável.
 
 Problemas de maximização podem ser vistos sob o seguinte olhar:
 
@@ -171,14 +171,14 @@ Problemas de maximização podem ser vistos sob o seguinte olhar:
 
 Que com isto podem ser otimizados pelo Método de Newton também.
 
-O movimento de \(x_k\) dentro da sequencia, é determinado pela relação das
+O movimento de \(x_k\) dentro da sequência, é determinado pela relação das
 quantidades e propriedades que tanto a primeira quanto a segunda derivada
-oferecem. As quantidades determinam a velocidade do motivento e os sinais a
-direção do movimento. De certa forma podemos ver esse movimento da sequencia
-\(\{x_k\}\) como instantes do movimento de uma bola numa ladeira, que no começo
-de sua descida é acelerada, e, conforme chega ao plano no fim da ladeira, começa
-a reduzir sua velocidade, até supostamente chegar no ponto mais baixo descendo a
-tal ladeira.
+oferecem. As quantidades determinam a velocidade do motivento, e os sinais
+indicam a direção do movimento. De certa forma podemos ver esse movimento da
+sequência \(\{x_k\}\) como instantes do movimento de uma bola numa ladeira, que
+no começo de sua descida é acelerada, e, conforme chega ao plano no fim da
+ladeira, começa a reduzir sua velocidade, até supostamente chegar no ponto mais
+baixo.
 
 \section{{Programando o Método}}
 
@@ -188,7 +188,7 @@ A forma mais simples e mais util de implementar o metodo de Newton é na forma
 de busca das raizes, que uma vez  implementada, só precisamos por como entrada
 a priemira e a segunda derivada da função que desejamos minimizar, já que o
 método não precisa saber qual a função de fato. A seguir temos a implementação
-na liguagem Rust:
+na liguagem de programação Rust:
 
 \input{./projetos/rust_newton1x1.tex}
 
