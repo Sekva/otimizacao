@@ -192,24 +192,23 @@ ressaltar que é importante o estudo do gráfico das derivadas de uma função.
 
 
 A própria definição da derivada já nos oferece uma uma visão simples de como
-ela pode ser implementada num programa de computador. Mas com alguns nuances
+ela pode ser implementada num programa de computador. Mas, com alguns nuances
 que devem ser levados em consideração. Segue a tal implementação:
 
 \input{./projetos/rust_derive1x1_v1.tex}
 
-Essa implementação é ingenua no que se diz respeito a precisão da operação. O
-uso depende da aplicação, caso se queira prezar por velocidade de calculo e 
+Essa implementação é ingênua no que se diz respeito a precisão da operação. O
+uso depende da aplicação, caso se queira prezar por velocidade de cálculo e
 muito pouco sobre precisão, talvez essa solução seja boa o suficiente. O
 problema com com precisão desta implementação é que não se é levado em
-consideração o aspecto infinitesimal da variação (\(\Delta X\) na figura 1.2, ou
-a variável h na implementação em Rust), já que é por este aspecto que
-definimos a derivada. Não temos como ter uma variável com tal propriedade num
-programa de computador. Como consequência, \(f(x + h) - f(x)\) já é calculada
-de forma falha, entregando uma variação diferente da que seria quando se tem
-uma variável infinitesimal. O que de fato é entregue é a variação um pouco mais
-a frente do ponto esperado.
+consideração o aspecto infinitesimal da variação (\(\Delta x\) na Figura \ref{derivada_padrao}, ou a variável h na implementação em Rust), já que é por
+este aspecto que definimos a derivada. Não temos como ter uma variável com tal
+propriedade num programa de computador. Como consequência, \(f(x + h) - f(x)\)
+já é calculada de forma falha, entregando uma variação diferente da que seria
+quando se tem uma variável infinitesimal. O que de fato é entregue é a variação
+um pouco mais a frente do ponto esperado.
 
-A partir dai podemos reformular considerando esse deslocamento, redefinindo
+A partir daí podemos reformular considerando esse deslocamento, redefinindo
 da seguinte forma:
 
 
