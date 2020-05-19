@@ -201,7 +201,8 @@ Essa implementação é ingênua no que se diz respeito a precisão da operaçã
 uso depende da aplicação, caso se queira prezar por velocidade de cálculo e
 muito pouco sobre precisão, talvez essa solução seja boa o suficiente. O
 problema com com precisão desta implementação é que não se é levado em
-consideração o aspecto infinitesimal da variação (\(\Delta x\) na Figura \ref{derivada_padrao}, ou a variável h na implementação em Rust), já que é por
+consideração o aspecto infinitesimal da variação (\(\Delta x\) na Figura
+\ref{derivada_padrao}, ou a variável h na implementação em Rust), já que é por
 este aspecto que definimos a derivada. Não temos como ter uma variável com tal
 propriedade num programa de computador. Como consequência, \(f(x + h) - f(x)\)
 já é calculada de forma falha, entregando uma variação diferente da que seria
