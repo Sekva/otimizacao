@@ -17,72 +17,68 @@ minimizam ou maximizam algo (seja energia, tempo, dinheiro, etc). Sendo este,
 muitas vezes um trabalho árduo, custoso.
 
 Dessa maneira, na matemática, tal processo é amplamente utilizado quando
-busca-se valores em conjunto \textit{A} (que pode terrestrições), com o
+busca-se valores em conjunto um \textit{A} (que pode ter restrições), com o
 objetivo de encontrar uma solução ótima (a melhor resposta para o problema),
-aplicando os valores de \textit{A} em numa função objetivo predefinida.
+aplicando os valores de \textit{A} em uma função objetivo predefinida.
 
-Podendo assim, ser representada da seguinte forma:
+Podendo assim, ser representada da forma como a seguir.
 
-    Dada a função
-        \begin{equation}
-            f : A \rightarrow \mathbb{R}
-        \end{equation}
+Dada uma função
+\begin{equation}
+    f : A \subseteq \mathbb{R} \rightarrow \mathbb{R}.
+\end{equation}
 
-        \begin{itemize}
-                \item Maximização pode ser definida como:
-        \end{itemize}
 
-                busca pelo elemento \(x_0 \in A\), que satisfaz:
+A maximização pode ser definida como; a busca pelo elemento
+\(x^* \in A\), que satisfaz:
 
-                    \begin{equation}
-                        f(x_0) \geq f(x);
-                    \end{equation}
+\begin{equation}
+    f(x^*) \geq f(x),
+\end{equation}
 
-                para todo \(x \in A\).
+para todo \(x \in A\).
 
-        \begin{itemize}
-                \item Minimização pode ser definida como:
-        \end{itemize}
 
-                busca pelo elemento \(x_0 \in A\), que satisfaz:
+A minimização pode ser definida como; a busca pelo elemento \(x^* \in A\),
+que satisfaz:
 
-                    \begin{equation}
-                        f(x_0) \leq f(x);
-                    \end{equation}
+\begin{equation}
+    f(x^*) \leq f(x),
+\end{equation}
 
-                para todo \(x \in A\).
+para todo \(x \in A\).
 
 \vspace{\baselineskip}
 Com isso, podemos agora entender como esse processo pode ser custoso. Iniciando
-com fato de que existem os pontos máximos e mínimos (pontos críticos), locais
-e globais, no espaço das funções. Sendo os pontos críticos locais, aqueles que
+com o fato de que existem os pontos máximos e mínimos (pontos
+críticos\footnote{Iremos denotar como pontos críticos apenas aqueles onde a função tem derivada e esta se anula.}), locais
+e globais, na imagem das funções. Sendo os pontos críticos locais, aqueles que
 não são os menores ou maiores valores para a minimização e maximização,
 respectivamente. E os pontos globais, aqueles que representam o menor ou maior
-valor no espaço das funções, para a minimização e maximização, respectivamente.
+valor na imagem das funções, para a minimização e maximização, respectivamente.
 
-Criando assim, uma certa incerteza ao encontrar um valor crítico numa função,
-já que é estritamente difícil saber se o ponto crítico encontrado é local ou
+Criando, desse modo, uma certa incerteza ao encontrar um valor crítico numa função,
+já que, é estritamente difícil saber se o ponto crítico encontrado é local ou
 global. Como pode-se perceber na Figura
 \ref{grafico_local_global_pontosCriticos}.
-
 
 \begin{figure}[h]
     \includegraphics[width=0.43\textwidth]
         {src/grafico_local_global_pontosCriticos.png}
     \centering
     \caption{Exemplo de pontos críticos locais e globais indicados no gráfico
-        de uma função}
+        de uma função.}
     \label{grafico_local_global_pontosCriticos}
 \end{figure}
 
 Como na grande maioria dos casos não é possível conhecer antecipadamente todo
 o espaço gerado pela função, a busca pelo ótimo pode resultar em pontos
-críticos locais. Donde, dependendo do problema tais resultados chegam a ser
+críticos locais. Donde, dependendo do problema, tais resultados chegam a ser
 satisfatórios. No entanto, quando o objetivo é estritamente encontrar os máximos
 ou mínimos globais, o trabalho necessário acaba sendo mais custoso, pelo fato de
 que há a incerteza da existência de mais pontos na grande maioria dos problemas.
 
-Ademais, o conjunto $A$, no qual contém os valores aplicáveis no problema, podem
+Ademais, o conjunto $A$, o qual contém os valores aplicáveis no problema, podem
 respeitar restrições, fazendo com que o campo de respostas do problema, não seja
 contínuo.
 
@@ -90,67 +86,79 @@ contínuo.
 
 \hspace{0.8cm}
 
-Evidente que funções possuem as variáveis dependentes (a qual representa o
-objeto da otimização) e variáveis independentes (cujo suas grandezas podem ser
-selecionadas), podemos denotar que, para a equação
-
+Evidentemente, as funções possuem as variáveis dependentes (que representam o
+objeto da otimização) e as variáveis independentes (que suas grandezas podem
+ser selecionadas), podemos denotar que, para a equação
 \begin{equation}
 	y = f(x),
 \end{equation}
-quando buscamos otimizá-la, temos como objetivo encontrar valores que quando
-aplicados à \textit{x}, temos o mínimo ou máximo valor \textit{y} (seja ele
-local, ou preferencialmente global).
+quando buscamos otimizá-la, temos como objetivo encontrar valores, \(x\), que
+quando aplicados à \(f(x)\), temos o mínimo ou máximo valor \textit{y} (seja
+ele local, ou preferencialmente, global).
 
 Partindo dessa perspectiva, acaba surgindo a necessidade de utilizar algum
 recurso para encontrar os pontos críticos. E nesse sentindo, pode-se utilizar
-a técnica de \textbf{derivação}, donde, oferece como recurso a possibilidade de
-identificar tais pontos.
+a técnica de \textbf{derivação}, que oferece o recurso de identificar tais
+pontos.
 
-A derivada é a representação da taxa de variação de uma função, em relação a
-um ponto. A partir daí, podemos observar um fator interessante; por exemplo,
+
+Podemos observar um fator interessante; por exemplo,
 quando a função está num ponto máximo, existem duas possibilidades, a primeira,
-sendo a função parando de crescer e em seguinda se tornando indefinida; e a
-segunda possibilidade quando a função para de crescer e começa a decrescer.
+a função para de crescer e, em seguinda, torna-se indefinida; e a
+segunda possibilidade, quando a função para de crescer e começa a decrescer.
 Com isso, é importante ressaltar que por definição, quando a derivada (taxa de
-variação) em um ponto é positiva, a função cresce, e quando negativa a função
+variação) em um ponto é positiva, a função cresce, e quando é negativa a função
 decresce. Conclui-se que, quando a taxa de variação é zero, a função ou para de
-crescer ou de decrescer, sendo assim um ponto de máximo ou de mínimo.
+crescer ou de decrescer, o que configura um ponto de máximo ou de mínimo. Mas
+também, é quando podo ocorrer o que denominamos ponto de sela (é um
+comportamento errático da função, que precisa de uma análise mais refinada). Ou
+em última instância, quando a função é constante.
 
 Com o uso da derivada, podemos pensar num método de otimização bastante simples,
 considerando \(f(x)\) a função que queremos otimizar e \(f'(x)\) sua função
-derivada, podemos dizer que o conjunto $O$ possui todos os ótimos locais e
+derivada, podemos dizer que o conjunto $O$, abaixo definido, possui todos os ótimos locais e
 globais de \(f(x)\):
 
 \begin{equation}
-    O := \{f(x) | f'(x) = 0\}
+    O := \{f(x) | f'(x) = 0\}.
+    \label{equacao_conjunto_o}
 \end{equation}
 
 
-Portanto, aplicando um filtro em $O$ para obeter o máximo e mínimo do conjunto,
-acabamos por obeter o máximo e mínimo de \(f(x)\):
+Portanto, aplicando um filtro em $O$ para obter o máximo e mínimo do conjunto,
+acabamos por obter o máximo e mínimo de \(f(x)\):
 
 
 \begin{equation}
-    max(f(x)) = max(O)
+    max(f(x)) = max(O),
 \end{equation}
 
 \begin{equation}
-    min(f(x)) = min(O)
+    min(f(x)) = min(O).
 \end{equation}
 
 
-Então podemos perceber dois problemas; determinar como encontrar os pontos onde
-a derivada se anule, e determinar se temos de fato todos os pontos.
+Então podemos perceber três problemas:
 
-Considerando por agora, apenas o problema de encontrar os pontos críticos;
+\begin{itemize}
+  \item Determinar como encontrar os pontos onde a derivada se anule, isto é, os pontos críticos;
+  \item Determinar se temos de fato todos os pontos;
+  \item Classificação dos pontos críticos, que nos revela quais são os máximos e
+  os mínimos, e, ademais, da sua relevância quanto a serem locais ou globais.
+\end{itemize}
 
-Entendendo melhor, a taxa de variação de uma função \(y=f(x)\) em relação a
-\(x\), é dada pela relação \(\Delta y / \Delta x\). Sendo esse resultado
-correspondente a tangente do ângulo formado pela intersecção entre a reta e a
-curva da função \(y\); o coeficiênte ângular da reta à curva.
+Consideraremos, por agora, apenas o problema de encontrar os pontos críticos.
 
-Sendo o cálculo da taxa de variação demonstrado pela Figura
-\ref{derivada_padrao}.
+
+A taxa de variação de uma função, \(y=f(x)\), em relação a \(x\), é dada pela
+relação \(\Delta y / \Delta x\). Sendo o cálculo da derivada
+demonstrado pela Figura \ref{derivada_padrao}, o que nos leva ao fato de que
+ os pontos críticos provém do conjunto solução da equação \(f'(x) = 0\), como
+ definido na equação \ref{equacao_conjunto_o}. Além disso, caso a função esteja
+ definida num intervalo fechado, temos pelo Teorema do Valor Absoluto, a
+ garantia que ela atingirá o valor dos seus pontos extremos, ou seja, seus
+ valores de máximo e mínimo serão atingidos naquele intervalo. O que culmina
+ nossa busca pelos pontos críticos.
 
 \begin{figure}[h]
     \includegraphics[width=0.45\textwidth]
@@ -160,28 +168,33 @@ Sendo o cálculo da taxa de variação demonstrado pela Figura
     \label{derivada_padrao}
 \end{figure}
 
-Partindo desse princípio, é intríseco saber que uma função pode ser derivada
+Partindo desse pressuposto, é nítido que a derivada de uma função é também uma
+função. Portanto, fica evidente que uma função pode ser derivada
 mais de uma vez, sendo essas derivadas, denominadas de `primeira derivada',
 `segunda derivada' e por ai em diante. De modo que, a segunda derivada é
-a taxa de variação da primeira derivada. Concluindo-se que dada a função
+a derivada da primeira derivada. Concluindo-se que dada a função
 \(f(x)\), sua primeira derivada é \(df/dx = p(x)\), e sua segunda derivada
 \(dp/dx = s(x)\).
 
-Considerando que a primeira e segunda derivada são as comumente utilizadas,
-pode-se agora entender a relação entre elas e a função original.
+Agora vamos tratar da classificação dos pontos críticos.
 
-Já sabido que a primeira derivada representa a taxa de variação de um ponto na
-curva, a segunda derivada proporciona informações complementares, como por
-exemplo, se é um ponto de máximo, mínimo ou inflexão, de modo que ela determina
-a concavidade da curva naquele ponto. Como pode-se ver na Figura
-\ref{relacao_primeira_segunda_derivada}. E de modo construtivo, é importante
-ressaltar que é importante o estudo do gráfico das derivadas de uma função.
+É sabido que a primeira derivada representa a taxa de variação instantânea de
+um ponto na curva, e, que, a segunda derivada proporciona informações
+complementares, como por exemplo, se é um ponto de máximo, mínimo ou inflexão,
+de modo que, ela determina a concavidade da curva naquele ponto. Como pode ser
+visto na Figura \ref{relacao_primeira_segunda_derivada}. E, de modo construtivo,
+devemos ressaltar que é importante o estudo do gráfico das derivadas de uma
+função, pois é necessariamente através do uso da intrepretação do comportamento
+da primeira derivada e/ou da segunda derivada, que obtemos a classificação dos
+pontos críticos seguindo os critérios que são apontados na Figura \ref{relacao_primeira_segunda_derivada}.
 
 \begin{figure}[h]
     \includegraphics[width=0.65\textwidth]
         {src/relacao_primeira_segunda_derivada.jpg}
     \centering
     \caption{Propriedades e relação da primeira e segunda derivada.}
+    % TODO:
+    % \tiny Essa imagem foi coletada de \href{https://www.alfaconnection.pro.br}}
     \label{relacao_primeira_segunda_derivada}
 \end{figure}
 
@@ -191,49 +204,46 @@ ressaltar que é importante o estudo do gráfico das derivadas de uma função.
 \hspace{0.8cm}
 
 
-A própria definição da derivada já nos oferece uma uma visão simples de como
+A própria definição da derivada já nos oferece uma visão simples de como
 ela pode ser implementada num programa de computador. Mas, com alguns nuances
-que devem ser levados em consideração. Segue a tal implementação:
+que devem ser levados em consideração, segue a tal implementação:
+
 
 \input{./projetos/rust_derive1x1_v1.tex}
 
-Essa implementação é ingênua no que se diz respeito a precisão da operação. O
-uso depende da aplicação, caso se queira prezar por velocidade de cálculo e
-muito pouco sobre precisão, talvez essa solução seja boa o suficiente. O
-problema com com precisão desta implementação é que não se é levado em
-consideração o aspecto infinitesimal da variação (\(\Delta x\) na Figura
-\ref{derivada_padrao}, ou a variável h na implementação em Rust), já que é por
-este aspecto que definimos a derivada. Não temos como ter uma variável com tal
-propriedade num programa de computador. Como consequência, \(f(x + h) - f(x)\)
-já é calculada de forma falha, entregando uma variação diferente da que seria
-quando se tem uma variável infinitesimal. O que de fato é entregue é a variação
-um pouco mais a frente do ponto esperado.
+Essa implementação é ingênua no que diz respeito a precisão da operação. O
+uso, depende da aplicação, caso se queira prezar por velocidade de cálculo e
+muito pouco sobre precisão, então provavelmente, essa solução seja boa o
+suficiente. O problema com a precisão desta implementação é que não se é
+levado em consideração o aspecto infinitesimal da variação (\(\Delta x\) na
+Figura \ref{derivada_padrao}, ou a variável \textit{h} na implementação
+em Rust), já que é por este aspecto que definimos a derivada. Não temos como ter
+uma variável com tal propriedade num programa de computador. Como consequência,
+\(f(x + h) - f(x)\) já é calculada de forma falha, entregando uma variação
+diferente da que seria quando se tem uma variável infinitesimal. O que de fato
+é entregue, é a variação um pouco mais à frente do ponto esperado.
 
-A partir daí podemos reformular considerando esse deslocamento, redefinindo
+A partir daí podemos reformular, considerando esse deslocamento, redefinindo
 da seguinte forma:
 
 
 \begin{equation}
-    f'(x) = \frac{f(x + h) - f(x - h)}{2h}
+    f'(x) = \frac{f(x + h) - f(x - h)}{2h}.
 \end{equation}
 
 Que é equivalente à:
 
 \begin{equation}
-    f'(x) = \frac{f(x + h) - f(x - h)}{(x + h) - (x - h)}
+    f'(x) = \frac{f(x + h) - f(x - h)}{(x + h) - (x - h)}.
 \end{equation}
 
 
 Usaremos essa segunda formulação por motivos de custo de multiplicação de de
-números reais se comparado a somas e subtrações, além da possível perca de
-precisão. Assim conseguimos compensar o tal deslocamento numa nova função
-insignificantemente mais custosa e mais precisa:
-
+números reais se comparado a somas e subtrações, além da possível perda de
+precisão. Assim, conseguimos compensar o tal deslocamento numa nova função
+insignificantemente mais custosa, e mais precisa. Como vemos no código a seguir:
 
 \input{./projetos/rust_derive1x1_v2.tex}
-
-
-
 
 
 \textcolor[rgb]{1,0,0}{\section{{Otimização de Funções à Várias Variáveis}}}
