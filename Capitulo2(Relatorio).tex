@@ -13,6 +13,50 @@
 
 \hspace{0.8cm}
 
+O Método de Newton nos diz que uma sequência \(\{x_k\}\) converge para o mínimo
+de \(f(x)\):
+
+\begin{equation}
+    x_{k+1} = x_{k} - \frac {f'(x_{k})}{f''(x_{k})}
+\end{equation}
+
+O que este método faz de fato é encontrar zeros de uma função \(g(x)\) a partir
+da mesma sequência \(\{x_k\}\), afim de que \(x_k\) converga para uma entrada
+\(x^*\) de \(g(x)\), tal que a mesma se anule:
+
+\begin{equation}
+    x_{k+1} = x_{k} - \frac {g(x_{k})}{g'(x_{k})}
+\end{equation}
+
+\begin{equation}
+    g(x^*) = 0
+\end{equation}
+
+
+Com isso temos um método que minimiza uma função que pode ser derivada duas
+vezes (caso não possa, aproximações de suas primeiras e segundas derivadas
+podem ser boas o suficiente) a partir de um valor de entrada. O método é
+simples, entrega muitas vezes ótimos locais próximos ao ponto inicial, mas tem
+seu destaque pode ser curto e facilmente computável.
+
+Problemas de maximização podem ser vistos sob o seguinte olhar:
+
+\begin{equation}
+    max(f(x)) = min(-1 * f(x))
+\end{equation}
+
+Que com isto podem ser otimizados pelo Método de Newton também.
+
+O movimento de \(x_k\) dentro da sequência, é determinado pela relação das
+quantidades e propriedades que tanto a primeira quanto a segunda derivada
+oferecem. As quantidades determinam a velocidade do motivento, e os sinais
+indicam a direção do movimento. De certa forma podemos ver esse movimento da
+sequência \(\{x_k\}\) como instantes do movimento de uma bola numa ladeira, que
+no começo de sua descida é acelerada, e, conforme chega ao plano no fim da
+ladeira, começa a reduzir sua velocidade, até supostamente chegar no ponto mais
+baixo.
+
+
 \section{{Outros Métodos}}
 
 \hspace{0.8cm}
@@ -20,5 +64,30 @@
 \section{{Programando os Métodos}}
 
 \hspace{0.8cm}
+
+\textbf{Método de Newton}
+
+A forma mais simples e mais util de implementar o metodo de Newton é na forma
+de busca das raizes, que uma vez  implementada, só precisamos por como entrada
+a priemira e a segunda derivada da função que desejamos minimizar, já que o
+método não precisa saber qual a função de fato. A seguir temos a implementação
+na liguagem de programação Rust:
+
+\input{./projetos/rust_newton1x1.tex}
+
+Os parâmetros da função são:
+
+    \begin{itemize}
+            \item Uma função \(f : \mathbb{R} \rightarrow \mathbb{R}\)
+            \item Uma entrada x sendo o chute inicial do otimo.
+    \end{itemize}
+
+
+A função derive1x1 recebe como parametro uma função e um ponto, tendo como
+retorno a derivada da função entregue, no ponto especificado. Restingindo-se
+à funções do tipo \(f : \mathbb{R} \rightarrow \mathbb{R}\), donde deve ser
+escrita pelo úsuario como bem entender.
+
+
 
 \textcolor[rgb]{1,0,0}{\section{{O Método de Newton para Várias Variáveis}}}
