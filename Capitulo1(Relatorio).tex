@@ -103,9 +103,8 @@ sendo a função parando de crescer e em seguinda se tornando indefinida; e a
 segunda possibilidade quando a função para de crescer e começa a decrescer.
 Com isso, é importante ressaltar que por definição, quando a derivada (taxa de
 variação) em um ponto é positiva, a função cresce, e quando negativa a função
-decresce. Conclui-se que, quando a derivada que representa a taxa de variação é
-zero, a função ou para de crescer ou de decrescer, sendo assim um
-ponto de máximo ou de mínimo.
+decresce. Conclui-se que, quando a taxa de variação é zero, a função ou para de
+crescer ou de decrescer, sendo assim um ponto de máximo ou de mínimo.
 
 Com o uso da derivada, podemos pensar num método de otimização bastante simples,
 considerando \(f(x)\) a função que queremos otimizar e \(f'(x)\) sua função
@@ -130,12 +129,51 @@ acabamos por obeter o máximo e mínimo de \(f(x)\):
 \end{equation}
 
 
-Então podemos perceber dois problemas, determinar como encontrar os pontos onde
+Então podemos perceber dois problemas; determinar como encontrar os pontos onde
 a derivada se anule, e determinar se temos de fato todos os pontos.
 
-Desconsiderando por agora o problema de determinar se tem-se todos os pontos
-críticos. Vamos considerar então o problema de encontrar os pontos críticos,
-levando em conta boas aproximações.
+Considerando por agora, apenas o problema de encontrar os pontos críticos;
+
+Entendendo melhor, a taxa de variação de uma função \(y=f(x)\) em relação a
+\(x\), é dada pela relação \(\Delta y / \Delta x\). Sendo esse resultado
+correspondente a tangente do ângulo formado pela intersecção entre a reta e a
+curva da função \(y\); o coeficiênte ângular da reta à curva.
+
+Sendo o cálculo da taxa de variação demonstrado pela Figura
+\ref{derivada_padrao}.
+
+\begin{figure}[h]
+    \includegraphics[width=0.45\textwidth]
+        {src/derivada_padrao.jpg}
+    \centering
+    \caption{Derivada: taxa de variação \(dy/dx\).}
+    \label{derivada_padrao}
+\end{figure}
+
+Partindo desse princípio, é intríseco saber que uma função pode ser derivada
+mais de uma vez, sendo essas derivadas, denominadas de `primeira derivada',
+`segunda derivada' e por ai em diante. De modo que, a segunda derivada é
+a taxa de variação da primeira derivada. Concluindo-se que dada a função
+\(f(x)\), sua primeira derivada é \(df/dx = p(x)\), e sua segunda derivada
+\(dp/dx = s(x)\).
+
+Considerando que a primeira e segunda derivada são as comunmente utilizadas,
+pode-se agora entender a relação entre elas e a função original.
+
+Já sebido que a primeira derivada representa a taxa de variação de um ponto na
+curva, a segunda derivada proporciona informações complementares, como por
+exemplo, se é um ponto de máximo, mínimo ou inflexão, de modo que ela determina
+a concavidade da curva naquele ponto. Como pode-se ver na Figura
+\ref{relacao_primeira_segunda_derivada}. E de modo construtivo, é importante
+ressaltar que é importante o estudo do gráfico das derivadas de uma função.
+
+\begin{figure}[h]
+    \includegraphics[width=0.65\textwidth]
+        {src/relacao_primeira_segunda_derivada.jpg}
+    \centering
+    \caption{Propriedades e relação da primeira e segunda derivada.}
+    \label{relacao_primeira_segunda_derivada}
+\end{figure}
 
 
 \section{{Programando o Método}}
