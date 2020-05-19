@@ -16,10 +16,10 @@ Diz-se otimização, o processo que tem como objetivo encontrar condições que
 minimizam ou maximizam algo (seja energia, tempo, dinheiro, etc). Sendo este,
 muitas vezes um trabalho árduo, custoso.
 
-Dessa maneira, na matemática, este processo é amplamente utilizado quando
-busca-se valores pertencentes ao conjunto \textit{A} (que pode ter
-restrições), com o objetivo de encontrar uma solução ótima, aplicando os valores
-de \textit{A} em numa função objetivo predefinida.
+Dessa maneira, na matemática, tal processo é amplamente utilizado quando
+busca-se valores em conjunto \textit{A} (que pode terrestrições), com o
+objetivo de encontrar uma solução ótima (a melhor resposta para o problema),
+aplicando os valores de \textit{A} em numa função objetivo predefinida.
 
 Podendo assim, ser representada da seguinte forma:
 
@@ -75,6 +75,16 @@ global. Como pode-se perceber na Figura
     \label{grafico_local_global_pontosCriticos}
 \end{figure}
 
+Como na grande maioria dos casos não é possível conhecer antecipadamente todo
+o espaço gerado pela função, a busca pelo ótimo pode resultar em pontos
+críticos locais. Donde, dependendo do problema tais resultados chegam a ser
+satisfatórios. No entanto, quando o objetivo é estritamente encontrar os máximos
+ou mínimos globais, o trabalho necessário acaba sendo mais custoso, pelo fato de
+que há a incerteza da existência de mais pontos na grande maioria dos problemas.
+
+Ademais, o conjunto $A$, no qual contém os valores aplicáveis no problema, podem
+respeitar restrições, fazendo com que o campo de respostas do problema, não seja
+contínuo.
 
 \section{{Otimização de Funções à Uma Variável Real}}
 
@@ -92,7 +102,7 @@ aplicados à \textit{x}, temos o mínimo ou máximo valor \textit{y} (seja ele
 local, ou preferencialmente global).
 
 Partindo dessa perspectiva, acaba surgindo a necessidade de utilizar algum
-recurso para encontrar o os pontos críticos. E nesse sentindo, pode-se utilizar
+recurso para encontrar os pontos críticos. E nesse sentindo, pode-se utilizar
 a técnica de \textbf{derivação}, donde, oferece como recurso a possibilidade de
 identificar tais pontos.
 
@@ -157,7 +167,7 @@ a taxa de variação da primeira derivada. Concluindo-se que dada a função
 \(f(x)\), sua primeira derivada é \(df/dx = p(x)\), e sua segunda derivada
 \(dp/dx = s(x)\).
 
-Considerando que a primeira e segunda derivada são as comunmente utilizadas,
+Considerando que a primeira e segunda derivada são as comumente utilizadas,
 pode-se agora entender a relação entre elas e a função original.
 
 Já sebido que a primeira derivada representa a taxa de variação de um ponto na
