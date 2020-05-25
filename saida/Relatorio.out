@@ -5,25 +5,27 @@
 \BOOKMARK [1][-]{section.1.4}{Otimiza\347\343o de Fun\347\365es \340 V\341rias Vari\341veis}{chapter.1}% 5
 \BOOKMARK [0][-]{chapter.2}{M\351todos Cl\341ssicos de Otimiza\347\343o}{}% 6
 \BOOKMARK [1][-]{section.2.1}{O M\351todo de Newton}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.2}{Outros M\351todos}{chapter.2}% 8
-\BOOKMARK [1][-]{section.2.3}{Programando os M\351todos}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.4}{O M\351todo de Newton para V\341rias Vari\341veis}{chapter.2}% 10
-\BOOKMARK [0][-]{chapter.3}{Os M\351todos Modernos de Otimiza\347\343o}{}% 11
-\BOOKMARK [1][-]{section.3.1}{Breve Relato Hist\363rico}{chapter.3}% 12
-\BOOKMARK [1][-]{section.3.2}{M\351todos de Um}{chapter.3}% 13
-\BOOKMARK [2][-]{subsection.3.2.1}{O M\351todo - Uma breve descri\347\343o}{section.3.2}% 14
-\BOOKMARK [2][-]{subsection.3.2.2}{Exemplos Aplica\347\365es}{section.3.2}% 15
-\BOOKMARK [2][-]{subsection.3.2.3}{Poss\355veis Aplica\347\365es}{section.3.2}% 16
-\BOOKMARK [1][-]{section.3.3}{M\351todos de Dois}{chapter.3}% 17
-\BOOKMARK [2][-]{subsection.3.3.1}{O M\351todo - Uma breve descri\347\343o}{section.3.3}% 18
-\BOOKMARK [2][-]{subsection.3.3.2}{Exemplos Aplica\347\365es}{section.3.3}% 19
-\BOOKMARK [2][-]{subsection.3.3.3}{Poss\355veis Aplica\347\365es}{section.3.3}% 20
-\BOOKMARK [1][-]{section.3.4}{Um com o outro}{chapter.3}% 21
-\BOOKMARK [0][-]{chapter.4}{Aplica\347\365es \340 Mec\342nica Celeste}{}% 22
-\BOOKMARK [1][-]{section.4.1}{Entendendo o Problema de N Corpos}{chapter.4}% 23
-\BOOKMARK [1][-]{section.4.2}{A Otimiza\347\343o na Mec\342nica}{chapter.4}% 24
-\BOOKMARK [1][-]{section.4.3}{Resultados Num\351ricos}{chapter.4}% 25
-\BOOKMARK [0][-]{chapter.5}{Demais Resultados}{}% 26
-\BOOKMARK [1][-]{section.5.1}{Outros Resultados}{chapter.5}% 27
-\BOOKMARK [2][-]{subsection.5.1.1}{}{section.5.1}% 28
-\BOOKMARK [0][-]{chapter*.5}{Bibliografia}{}% 29
+\BOOKMARK [2][-]{subsection.2.1.1}{Entendendo o M\351todo}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.2}{Encontrando M\355nimos}{section.2.1}% 9
+\BOOKMARK [1][-]{section.2.2}{Outros M\351todos}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.3}{Programando os M\351todos}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.4}{O M\351todo de Newton para V\341rias Vari\341veis}{chapter.2}% 12
+\BOOKMARK [0][-]{chapter.3}{Os M\351todos Modernos de Otimiza\347\343o}{}% 13
+\BOOKMARK [1][-]{section.3.1}{Breve Relato Hist\363rico}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{M\351todos de Um}{chapter.3}% 15
+\BOOKMARK [2][-]{subsection.3.2.1}{O M\351todo - Uma breve descri\347\343o}{section.3.2}% 16
+\BOOKMARK [2][-]{subsection.3.2.2}{Exemplos Aplica\347\365es}{section.3.2}% 17
+\BOOKMARK [2][-]{subsection.3.2.3}{Poss\355veis Aplica\347\365es}{section.3.2}% 18
+\BOOKMARK [1][-]{section.3.3}{M\351todos de Dois}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.3.1}{O M\351todo - Uma breve descri\347\343o}{section.3.3}% 20
+\BOOKMARK [2][-]{subsection.3.3.2}{Exemplos Aplica\347\365es}{section.3.3}% 21
+\BOOKMARK [2][-]{subsection.3.3.3}{Poss\355veis Aplica\347\365es}{section.3.3}% 22
+\BOOKMARK [1][-]{section.3.4}{Um com o outro}{chapter.3}% 23
+\BOOKMARK [0][-]{chapter.4}{Aplica\347\365es \340 Mec\342nica Celeste}{}% 24
+\BOOKMARK [1][-]{section.4.1}{Entendendo o Problema de N Corpos}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.2}{A Otimiza\347\343o na Mec\342nica}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.3}{Resultados Num\351ricos}{chapter.4}% 27
+\BOOKMARK [0][-]{chapter.5}{Demais Resultados}{}% 28
+\BOOKMARK [1][-]{section.5.1}{Outros Resultados}{chapter.5}% 29
+\BOOKMARK [2][-]{subsection.5.1.1}{}{section.5.1}% 30
+\BOOKMARK [0][-]{chapter*.7}{Bibliografia}{}% 31
