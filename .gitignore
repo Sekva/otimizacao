@@ -1,6 +1,8 @@
 *.log
 *.toc
 *.aux
+*.out
 saida/*.log
 saida/*.toc
 saida/*.aux
+saida/*.out
