@@ -11,34 +11,35 @@
 
 \section{{O Método de Newton}}
 
-\hspace{0.8cm}
 
 \subsection{Entendendo o Método}
 
 %TODO: Falar de funções bem definidas
 
+\hspace{0.8cm}
 O Método de Newton, foi desenvolvido com o objetivo de realizar a estimativa
 para as raízes de uma função. De modo que, a execução do método é feita de
 forma iterativa, repetindo sempre o mesmo processo, atualizando o mesmo valor.
 
 Este método faz uso do recurso de derivação, existindo, uma relação muito
-forte com o ângulo da reta tangênte ao ponto, na função. Ademais, é
+forte com o ângulo da reta tangente ao ponto, na função. Ademais, é
 importante ressaltar, que é necessário um palpite inicial, que represente
-o valor de \textit{x}, no qual, partindo desse valor, será buscado a raiz da
-função. E com isso, vamos entender como o dado método funciona:
+o valor de \textit{x}, no qual, partindo desse valor, será buscado a raiz mais
+próxima da função a partir daquele ponto. E com isso, vamos entender como o
+dado método funciona:
 
 Partindo do princípio do método, o objetivo será utilizar a reta tangente a um
 ponto, para gerar valores cada vez mais próximos da raiz daquela função. De
-modo que, será analisado a inteseção da reta tangente com o eixo das
-abscissas. E sendo a diferenca do valor x da entrada da função com o valor de
-interseção no eixo x, o novo valor de entrada na função, constuindo assim
+modo que, será analisado a interseção da reta tangente com o eixo das
+abscissas. E sendo a diferença do valor x da entrada da função com o valor de
+interseção no eixo x, o novo valor de entrada na função, construindo assim
 várias iterações, gerando valores cada vez mais próximos da raiz. Como será
 visto, a seguir:
 
 Já sabido que a equação da reta é dada como:
 
 \begin{equation}
-    (y-y_0)=m(x-x_0).
+    (y - y_0) = m(x - x_0).
 \end{equation}
 
 E levando em conta que temos como objetivo encontrar $x$, que é um ponto
@@ -48,9 +49,9 @@ sobreposto no eixo x, podemos considerar $y=0$, logo:
     -y_0=m(x-x_0).
 \end{equation}
 
-Com isso, sabemos que $y_0$ é a imgam da função $f(x_0)$, e $m$ é o ângulo da
-reta tangênte ao ponto $x_0$, ou seja: $m=f'(x_0)$. Logo, desenvolvendo essa
-equação, temos:
+Com isso, sabemos que $y_0$ é a imagem da função $f(x_0)$, e $m$ representa o
+ângulo da reta tangente ao ponto $x_0$, ou seja: $m=f'(x_0)$. Logo,
+desenvolvendo essa equação, temos:
 
 \begin{equation}
     -f(x_0) = f'(x_0)(x-x_0),
@@ -72,11 +73,9 @@ equação, temos:
     x = x_0 - \frac {f(x_0)}{f'(x_0)}.
 \end{equation}\\
 
-E com isso, exemplificando em um gráfico, temos:
-
-Sendo $f(x)=-x^2+2x$, o palpite inicial $x_0=1.5$, $P1$ sendo o ponto de que
-representa $x_0$ aplicado a função $f$ e $x1$ a interseção da reta tangente à
-$P1$ com o eixo x.
+E com isso, exemplificando em um gráfico, temos que, sendo $f(x)=-x^2+2x$, o
+palpite inicial $x_0=1.5$, $P1$ sendo o ponto de que representa $x_0$ aplicado
+a função $f$ e $x1$ a interseção da reta tangente à $P1$ com o eixo x.
 
 \begin{figure}[ht]
     \includegraphics[width=0.55\textwidth]
@@ -119,7 +118,7 @@ E assim, podemos notar a aproximação de $x_k$ para a raiz de $f$, observando o
 ponto $x_2$.
 
 Ademais, é válido ressaltar que o denominador da equação
-\ref{newton_primeiraDeriv} tem que ser diferente de 0 (ou seja, a reta tengante
+\ref{newton_primeiraDeriv} tem que ser diferente de 0 (ou seja, a reta tangante
 num ponto $P$ não pode ser paralela ao eixo x). No entanto, caso contrário,
 isso significa que a dada função não possui raiz na proximidade daquele ponto.
 
@@ -130,22 +129,22 @@ mínimos de uma função. Vimos que, o Método de Newton calcula raízes, e
 desse modo, vinculando o que foi estudado no Capítulo 1, sabemos que, os
 mínimos de uma função podem ser representados como raízes de sua derivada.
 
-%TODO: Falar mais/melhor sobre a sequencia {xk} (tendencia ao 0 da funcao)
+%TODO: Falar mais/melhor sobre a sequencia {xk} (tendencia ao 0 da função)
 
-Então, dado que as raizes de $f(x)$ podem ser geradas a partir da equação
+Então, dado que as raízes de $f(x)$ podem ser geradas a partir da equação
 \ref{newton_primeiraDeriv}, temos que, considerando $g(x)$ uma função duas vezes
-derivável, e tendo como objetvido encontrar seus pontos de mínimo, pode-se
+derivável, e tendo como objetivo encontrar seus pontos de mínimo, pode-se
 utilizar o Método de Newton para resolver tal problema da seguinte forma:
 
 \begin{equation}
     x_{k+1} = x_{k} - \frac {g'(x_{k})}{g''(x_{k})}.
 \end{equation}
 
-Encontrando então as raizes aproximadas de sua derivada, e considerando
+Encontrando então as raízes aproximadas de sua derivada, e considerando
 estas como  $x^*$, temos então que:
 
 \begin{equation}
-    g(x^*) = 0.
+    g'(x^*) = 0.
 \end{equation}
 
 O método é simples, entrega muitas vezes ótimos locais próximos ao ponto
@@ -161,7 +160,7 @@ Que com isto podem ser otimizados pelo Método de Newton também.
 
 O movimento de \(x_k\) dentro da sequência, é determinado pela relação das
 quantidades e propriedades que tanto a primeira quanto a segunda derivada
-oferecem. As quantidades determinam a velocidade do motivento, e os sinais
+oferecem. As quantidades determinam a velocidade do movimento, e os sinais
 indicam a direção do movimento. De certa forma podemos ver esse movimento da
 sequência \(\{x_k\}\) como instantes do movimento de uma bola numa ladeira, que
 no começo de sua descida é acelerada, e, conforme chega ao plano no fim da
@@ -171,6 +170,67 @@ baixo.
 
 \section{{Outros Métodos}}
 
+\subsection{Simplex}
+
+\hspace{0.8cm}
+O método Simplex pode ser considerado classificado como clássico por ser um
+dos métodos mais famosos. Formulado por George B. Dantzig, fruto de uma
+sugestão de outro homem, T. S. Motzkin, que contribuiu para diversas áreas da
+matemática.
+
+Os problemas que o método Simplex resolvem fazem parte de uma conjunto de
+problemas de Otimização Linear (ou Programação Linear), os quais se restringem
+a apenas funções lineares. Além disso, tais problemas normalmente acompanham
+restrições sobre as entradas da função a ser otimizada.
+
+Um problema de otimização linear pode ser resumido em:
+
+\begin{equation}
+    \begin{split}
+        Z = c_1x_1 + c_2x_2 + … + c_nx_n
+    \end{split}
+\end{equation}
+
+Restrições também lineares para a função objetivo:
+\begin{equation}
+    \begin{split}
+        &   a_{11}x_1 + a_{12}x_2 + … + a_{1n}x_n \leq b_1\\
+        &   a_{21}x_1 + a_{22}x_2 + … + a_{2n}x_n \leq b_2\\
+        &   ...\\
+        &   a_{m1}x_1 + a_{m2}x_2 + … + a_{mn}x_n \leq b_m\\
+        &   x_1 \geq 0, x_2 \geq 0, …, x_n \geq 0
+    \end{split}
+\end{equation}
+
+O tipo de problema que o Simplex resolve se desenvolve como a seguir:
+
+\begin{equation}
+    \begin{split}
+        max \{c^tx | Ax \leq b, x \geq 0\}\\
+    \end{split}
+\end{equation}
+
+
+A forma de operação desse método é semelhante ao que uma pessoa comum faria
+quando se deparasse com o problema de forma gráfica. O problema, sendo
+completamente linear, gera retas, tais retas acabam por formar regiões de 
+possíveis soluções, e dessas regiões queremos saber qual a melhor solução.
+Para isso bastaria procurar dentro de tal região onde o valor da função Z é o
+maior possível. Uma vez a região sendo construída por retas, ela acaba por ser
+convexa, como um polígono no plano ou um poliedro no espaço, o que a acaba por
+facilitar a busca pelo máximo dentro dessa região uma vez que basta olha os 
+vértices de tal região.
+
+Repara-se que o método Simplex não se utiliza de artifícios e ferramentas do
+Calculo como nos outros métodos anteriormente apresentados, mas sim formas
+diferentes de analisar o problema, que por certos aspectos é simples. O método
+completo é constituído por operações em uma matriz especifica (Tableau) que
+representa o problema, o qual não é necessário ser apresentado aqui por se
+distanciar da "família" de métodos de otimização que é apresentado neste
+documento.
+
+
+
 \hspace{0.8cm}
 
 \section{{Programando os Métodos}}
@@ -179,26 +239,26 @@ baixo.
 
 \textbf{Método de Newton}
 
-A forma mais simples e mais util de implementar o metodo de Newton é na forma
+A forma mais simples e mais útil de implementar o método de Newton é na forma
 de busca das raízes, que uma vez  implementada, só precisamos por como entrada
-a priemira e a segunda derivada da função que desejamos minimizar, já que o
+a primeira e a segunda derivada da função que desejamos minimizar, já que o
 método não precisa saber qual a função de fato. A seguir temos a implementação
-na liguagem de programação Rust:
-
+na linguagem de programação Rust:
+\vspace{0.2cm}
 \input{./projetos/rust_newton1x1.tex}
 
 Os parâmetros da função são:
 
     \begin{itemize}
             \item Uma função \(f : \mathbb{R} \rightarrow \mathbb{R}\)
-            \item Uma entrada x sendo o chute inicial do otimo.
+            \item Uma entrada x sendo o chute inicial do ótimo.
     \end{itemize}
 
 
-A função derive1x1 recebe como parametro uma função e um ponto, tendo como
-retorno a derivada da função entregue, no ponto especificado. Restingindo-se
+A função "derive1x1" recebe como parâmetro uma função e um ponto, tendo como
+retorno a derivada da função entregue, no ponto especificado. Restringindo-se
 à funções do tipo \(f : \mathbb{R} \rightarrow \mathbb{R}\), donde deve ser
-escrita pelo úsuario como bem entender.
+escrita pelo usuário como bem entender.
 
 
 
