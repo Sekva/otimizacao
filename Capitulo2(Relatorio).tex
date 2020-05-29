@@ -170,6 +170,54 @@ baixo.
 
 \section{{Outros Métodos}}
 
+\subsection{Métodos de Gradiente Descendente}
+
+O método de Newton na verdade abriu espaço para uma família de métodos
+similares, que como visto, podem tanto ser métodos para encontrar raízes de
+funções quando máximos/mínimos. São estes chamados de métodos quasi-Newton, que
+se olharmos tomando como o ponto de partida o método de Newton, eles oferecem
+maior flexibilidade em como se deseja gastar os recursos de precisão e
+velocidade computacional.
+
+O método de Newton, que encontra o \(min(f(x))\) através de uma sequência
+\(\{x_k\}\):
+
+\begin{equation}
+    x_{k+1} = x_{k} - \frac {f'(x_{k})}{f''(x_{k})}.
+\end{equation}
+
+Pode ser reescrito da seguinte forma:
+
+\begin{equation}
+    x_{k+1} = x_{k} -  \frac{1}{f''(x)} * f'(x_{k}).
+\end{equation}
+
+
+Como sabemos que quem determina a direção onde a função é \(f'(x)\), não é
+completamente necessário o uso de \( \frac{1}{f''(x)} \). O que a maioria dos
+métodos quasi-Newton fazem é substituir por aproximações boas o suficientes:
+
+\begin{equation}
+    x_{k+1} = x_{k} -  \alpha * f'(x_{k}).
+    \label{newton_lambda}
+\end{equation}
+
+Onde \(\alpha\) satisfaz:
+
+\begin{equation}
+    f(x_{k} -  \alpha * f'(x_{k})) < f(x_{x}).
+    \label{newton_restricao_alpha}
+\end{equation}
+
+A partir da equação \ref{newton_lambda}, podemos escolher um \(\alpha\) de modo
+que é menos custoso encontrar esse \(\alpha\) do que calcular a segunda
+derivada da função objetivo, ou até podemos nem calcular nada, basta considerar
+um \(\alpha\) fixo e tão pequeno que quando a restrição apresentada em
+\ref{newton_restricao_alpha} não for cumprida, temos uma aproximação boa o
+suficiente para o minimo da função.
+
+
+
 \subsection{Simplex}
 
 \hspace{0.8cm}
