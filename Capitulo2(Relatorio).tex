@@ -17,24 +17,23 @@
 %TODO: Falar de funções bem definidas
 
 \hspace{0.8cm}
-O Método de Newton, foi desenvolvido com o objetivo de realizar a estimativa
+O Método de Newton, foi desenvolvido com o objetivo de econtrar estimativas
 para as raízes de uma função. De modo que, a execução do método é feita de
 forma iterativa, repetindo sempre o mesmo processo, atualizando o mesmo valor.
 
 Este método faz uso do recurso de derivação, existindo, uma relação muito
 forte com o ângulo da reta tangente ao ponto, na função. Ademais, é
 importante ressaltar, que é necessário um palpite inicial, que represente
-o valor de \textit{x}, no qual, partindo desse valor, será buscado a raiz mais
-próxima da função a partir daquele ponto. E com isso, vamos entender como o
-dado método funciona:
+o valor de \textit{x}, no qual, partindo desse valor, será buscado a raiz.
+E com isso, vamos entender como o dado método funciona.
 
-Partindo do princípio do método, o objetivo será utilizar a reta tangente a um
+Partindo do princípio do método, o objetivo, será utilizar a reta tangente a um
 ponto, para gerar valores cada vez mais próximos da raiz daquela função. De
 modo que, será analisado a interseção da reta tangente com o eixo das
-abscissas. E sendo a diferença do valor x da entrada da função com o valor de
-interseção no eixo x, o novo valor de entrada na função, construindo assim
-várias iterações, gerando valores cada vez mais próximos da raiz. Como será
-visto, a seguir:
+abscissas. E sendo, a diferença do valor x da entrada da função com o valor da
+fração entre a função e sua derivada no mesmo ponto, o novo valor de entrada na
+função, construindo assim várias iterações, gerando valores cada vez mais
+próximos da raiz. Como será visto, a seguir:
 
 Já sabido que a equação da reta é dada como:
 
@@ -50,8 +49,8 @@ sobreposto no eixo x, podemos considerar $y=0$, logo:
 \end{equation}
 
 Com isso, sabemos que $y_0$ é a imagem da função $f(x_0)$, e $m$ representa o
-ângulo da reta tangente ao ponto $x_0$, ou seja: $m=f'(x_0)$. Logo,
-desenvolvendo essa equação, temos:
+ângulo da reta tangente ao ponto $x_0$, ou seja: $m=f'(x_0)$. Desenvolvendo
+essa equação, temos:
 
 \begin{equation}
     -f(x_0) = f'(x_0)(x-x_0),
@@ -74,7 +73,7 @@ desenvolvendo essa equação, temos:
 \end{equation}\\
 
 E com isso, exemplificando em um gráfico, temos que, sendo $f(x)=-x^2+2x$, o
-palpite inicial $x_0=1.5$, $P1$ sendo o ponto de que representa $x_0$ aplicado
+palpite inicial $x_0=1.5$, $P1$ sendo o ponto que representa $x_0$ aplicado
 a função $f$ e $x1$ a interseção da reta tangente à $P1$ com o eixo x.
 
 \begin{figure}[ht]
@@ -82,15 +81,14 @@ a função $f$ e $x1$ a interseção da reta tangente à $P1$ com o eixo x.
       {src/MetodoNewton_grafico_1.png}
     \centering
     \caption{
-      \centering
       Primeira iteração do Método de Newton.
-    }
+     }
     \label{MetodoNewton_grafico_1}
 \end{figure}
 
 
 E a partir do dado gráfico, agora podemos entender melhor como a iteração
-funcionará, pois, e valor gerado, $x_1$, será aplicado no mesmo método. E com
+funcionará, pois, o valor gerado, $x_1$, será aplicado no mesmo método. E com
 isso, podemos construir a seguinte equação:
 
 \begin{equation}
@@ -98,17 +96,16 @@ isso, podemos construir a seguinte equação:
     \label{newton_primeiraDeriv}
 \end{equation}
 
-E com isso, gera-se uma sequência $\{xk\}$, donde, esta, converge para a raiz
-da função. E nesse sentido, vejamos a próxima iteração (Figura
+Desse modo, gera-se uma sequência $\{xk\}$, donde, esta, converge para a
+raiz da função. E nesse sentido, vejamos a próxima iteração (Figura
 \ref{MetodoNewton_grafico_2}) do exemplo mostrado na Figura
 \ref{MetodoNewton_grafico_1}.
 
 \begin{figure}[ht]
+    \centering
     \includegraphics[width=0.55\textwidth]
       {src/MetodoNewton_grafico_2.png}
-    \centering
     \caption{
-      \centering
       Segunda iteração do Método de Newton.
     }
     \label{MetodoNewton_grafico_2}
@@ -132,7 +129,7 @@ mínimos de uma função podem ser representados como raízes de sua derivada.
 %TODO: Falar mais/melhor sobre a sequencia {xk} (tendencia ao 0 da função)
 
 Então, dado que as raízes de $f(x)$ podem ser geradas a partir da equação
-\ref{newton_primeiraDeriv}, temos que, considerando $g(x)$ uma função duas vezes
+\ref{newton_primeiraDeriv}, temos que: considerando $g(x)$ uma função duas vezes
 derivável, e tendo como objetivo encontrar seus pontos de mínimo, pode-se
 utilizar o Método de Newton para resolver tal problema da seguinte forma:
 
@@ -148,7 +145,7 @@ estas como  $x^*$, temos então que:
 \end{equation}
 
 O método é simples, entrega muitas vezes ótimos locais próximos ao ponto
-inicial, mas tem seu destaque pode ser curto e facilmente computável.
+inicial, mas tem seu destaque, que é ser, facilmente computável.
 
 Problemas de maximização podem ser vistos sob o seguinte olhar:
 
@@ -159,11 +156,11 @@ Problemas de maximização podem ser vistos sob o seguinte olhar:
 Que com isto podem ser otimizados pelo Método de Newton também.
 
 O movimento de \(x_k\) dentro da sequência, é determinado pela relação das
-quantidades e propriedades que tanto a primeira quanto a segunda derivada
-oferecem. As quantidades determinam a velocidade do movimento, e os sinais
-indicam a direção do movimento. De certa forma podemos ver esse movimento da
-sequência \(\{x_k\}\) como instantes do movimento de uma bola numa ladeira, que
-no começo de sua descida é acelerada, e, conforme chega ao plano no fim da
+quantidades e propriedades, que tanto a primeira quanto a segunda derivada
+oferecem. As quantidades, determinam a velocidade do movimento, e os sinais,
+indicam a direção do movimento. De certa forma, podemos interpretar o movimento
+da sequência \(\{x_k\}\) como instantes do movimento de uma bola numa ladeira,
+que no começo de sua descida é acelerada, e, conforme chega ao plano no fim da
 ladeira, começa a reduzir sua velocidade, até supostamente chegar no ponto mais
 baixo.
 
@@ -261,12 +258,12 @@ O tipo de problema que o Simplex resolve se desenvolve como a seguir:
 
 A forma de operação desse método é semelhante ao que uma pessoa comum faria
 quando se deparasse com o problema de forma gráfica. O problema, sendo
-completamente linear, gera retas, tais retas acabam por formar regiões de 
+completamente linear, gera retas, tais retas acabam por formar regiões de
 possíveis soluções, e dessas regiões queremos saber qual a melhor solução.
 Para isso bastaria procurar dentro de tal região onde o valor da função Z é o
 maior possível. Uma vez a região sendo construída por retas, ela acaba por ser
 convexa, como um polígono no plano ou um poliedro no espaço, o que a acaba por
-facilitar a busca pelo máximo dentro dessa região uma vez que basta olha os 
+facilitar a busca pelo máximo dentro dessa região uma vez que basta olha os
 vértices de tal região.
 
 Repara-se que o método Simplex não se utiliza de artifícios e ferramentas do
