@@ -96,7 +96,7 @@ isso, podemos construir a seguinte equação:
     \label{newton_primeiraDeriv}
 \end{equation}
 
-Desse modo, gera-se uma sequência $\{xk\}$, donde, esta, converge para a
+Desse modo, gera-se uma sequência $\{x_k\}$, donde, esta, converge para a
 raiz da função. E nesse sentido, vejamos a próxima iteração (Figura
 \ref{MetodoNewton_grafico_2}) do exemplo mostrado na Figura
 \ref{MetodoNewton_grafico_1}.
@@ -126,7 +126,7 @@ mínimos de uma função. Vimos que, o Método de Newton calcula raízes, e
 desse modo, vinculando o que foi estudado no Capítulo 1, sabemos que, os
 mínimos de uma função podem ser representados como raízes de sua derivada.
 
-%TODO: Falar mais/melhor sobre a sequencia {xk} (tendencia ao 0 da função)
+%TODO: Falar mais/melhor sobre a sequencia {x_k} (tendencia ao 0 da função)
 
 Então, dado que as raízes de $f(x)$ podem ser geradas a partir da equação
 \ref{newton_primeiraDeriv}, temos que: considerando $g(x)$ uma função duas vezes
@@ -167,32 +167,38 @@ baixo.
 
 \section{{Outros Métodos}}
 
-\subsection{Métodos de Gradiente Descendente}
+Com o advento do Método de Newton, acabou surgindo uma família de métodos
+similares. E como foi visto, é possível a partir dele, encontrar tanto raízes
+de funções, quanto máximos/mínimos, herdando essa características para vários
+dos métodos que o derivaram. São estes, chamados de Métodos Quasi-Newton,
+que, olhando como ponto de partida o Método de Newton, fornecem uma grande
+flexibilidade em como deseja-se utilizar os recursos de presição e poder
+computacional.
 
-O método de Newton na verdade abriu espaço para uma família de métodos
-similares, que como visto, podem tanto ser métodos para encontrar raízes de
-funções quando máximos/mínimos. São estes chamados de métodos quasi-Newton, que
-se olharmos tomando como o ponto de partida o método de Newton, eles oferecem
-maior flexibilidade em como se deseja gastar os recursos de precisão e
-velocidade computacional.
+Ademais, vejamos alguns outros métodos de otimização:
 
-O método de Newton, que encontra o \(min(f(x))\) através de uma sequência
-\(\{x_k\}\):
+\subsection{Método do Gradiente Descendente}
+
+Este, classificado como um Método Quasi-Newton, resolve os mesmos tipos de
+problemas que os do método herdado. Considerando que o Método de Newton
+encontra o \(min(f(x))\) através de uma sequência \(\{x_k\}\):
 
 \begin{equation}
     x_{k+1} = x_{k} - \frac {f'(x_{k})}{f''(x_{k})}.
 \end{equation}
 
-Pode ser reescrito da seguinte forma:
+No qual, pode ser reescrito da seguinte forma:
 
 \begin{equation}
     x_{k+1} = x_{k} -  \frac{1}{f''(x)} * f'(x_{k}).
 \end{equation}
 
-
-Como sabemos que quem determina a direção onde a função é \(f'(x)\), não é
-completamente necessário o uso de \( \frac{1}{f''(x)} \). O que a maioria dos
-métodos quasi-Newton fazem é substituir por aproximações boas o suficientes:
+E, ressaltando que, sabemos que quem determina a direção da convergência é
+\(f'(x)\), não é completamente necessário o uso de \( \frac{1}{f''(x)} \), que
+tem como principal papel de controlar o tamanho do `passo dado' na iteração.
+De modo que, a maioria dos Métodos Quasi-Newton fazem a substituição
+da dada fração por aproximações boas o suficiente. E com isso, levando em
+conta $\alpha$ como a representação dessa aproximação, temos:
 
 \begin{equation}
     x_{k+1} = x_{k} -  \alpha * f'(x_{k}).
@@ -206,37 +212,34 @@ Onde \(\alpha\) satisfaz:
     \label{newton_restricao_alpha}
 \end{equation}
 
-A partir da equação \ref{newton_lambda}, podemos escolher um \(\alpha\) de modo
-que é menos custoso encontrar esse \(\alpha\) do que calcular a segunda
-derivada da função objetivo, ou até podemos nem calcular nada, basta considerar
-um \(\alpha\) fixo e tão pequeno que quando a restrição apresentada em
+A partir da equação \ref{newton_lambda}, podemos escolher um \(\alpha\), de
+modo que, seja menos custoso encontrá-lo do que calcular a segunda derivada
+da função objetivo, ou até, podemos nem calculá-lo, basta considerar
+um \(\alpha\) fixo, e tão pequeno que, quando a restrição
 \ref{newton_restricao_alpha} não for cumprida, temos uma aproximação boa o
 suficiente para o minimo da função.
-
 
 
 \subsection{Simplex}
 
 \hspace{0.8cm}
-O método Simplex pode ser considerado classificado como clássico por ser um
+O método Simplex, pode ser classificado como clássico, por ser um
 dos métodos mais famosos. Formulado por George B. Dantzig, fruto de uma
 sugestão de outro homem, T. S. Motzkin, que contribuiu para diversas áreas da
 matemática.
 
-Os problemas que o método Simplex resolvem fazem parte de uma conjunto de
+Os problemas que o método Simplex resolve, fazem parte de uma conjunto de
 problemas de Otimização Linear (ou Programação Linear), os quais se restringem
-a apenas funções lineares. Além disso, tais problemas normalmente acompanham
-restrições sobre as entradas da função a ser otimizada.
+a, apenas, funções lineares. Além disso, tais problemas normalmente acompanham
+restrições, sobre as entradas da função a ser otimizada.
 
-Um problema de otimização linear pode ser resumido em:
+Um problema de otimização linear, pode ser resumido em:
 
 \begin{equation}
-    \begin{split}
         Z = c_1x_1 + c_2x_2 + … + c_nx_n
-    \end{split}
 \end{equation}
 
-Restrições também lineares para a função objetivo:
+E tendo restrições também lineares para a função objetivo, como:
 \begin{equation}
     \begin{split}
         &   a_{11}x_1 + a_{12}x_2 + … + a_{1n}x_n \leq b_1\\
@@ -247,48 +250,45 @@ Restrições também lineares para a função objetivo:
     \end{split}
 \end{equation}
 
-O tipo de problema que o Simplex resolve se desenvolve como a seguir:
+O tipo de problema que o Simplex resolve, se desenvolve como a seguir:
 
 \begin{equation}
-    \begin{split}
         max \{c^tx | Ax \leq b, x \geq 0\}\\
-    \end{split}
 \end{equation}
 
 
-A forma de operação desse método é semelhante ao que uma pessoa comum faria
-quando se deparasse com o problema de forma gráfica. O problema, sendo
-completamente linear, gera retas, tais retas acabam por formar regiões de
-possíveis soluções, e dessas regiões queremos saber qual a melhor solução.
-Para isso bastaria procurar dentro de tal região onde o valor da função Z é o
-maior possível. Uma vez a região sendo construída por retas, ela acaba por ser
-convexa, como um polígono no plano ou um poliedro no espaço, o que a acaba por
-facilitar a busca pelo máximo dentro dessa região uma vez que basta olha os
-vértices de tal região.
+A forma de operação desse método é semelhante ao que uma pessoa comumente faria
+ao se deparasse com o problema de forma gráfica. O problema, sendo
+completamente linear, gera retas, que acabam por formando regiões de
+possíveis soluções, e dessas regiões, queremos saber qual a melhor solução.
+Para isso, bastaria procurar dentro de tal região, onde o valor da função Z é o
+maior possível. Uma vez a região sendo construída por retas, acaba por
+ter a característica de ser convexa, como um polígono convexo no plano ou um
+poliedro convexo no espaço, o que a acaba por facilitar a busca pelo máximo,
+dentro dessa região, uma vez que basta olha os vértices de tal região.
 
-Repara-se que o método Simplex não se utiliza de artifícios e ferramentas do
-Calculo como nos outros métodos anteriormente apresentados, mas sim formas
+Repara-se, que, o método Simplex não se utiliza de artifícios e ferramentas do
+Cálculo, como nos métodos anteriormente apresentados, mas sim, formas
 diferentes de analisar o problema, que por certos aspectos é simples. O método
-completo é constituído por operações em uma matriz especifica (Tableau) que
-representa o problema, o qual não é necessário ser apresentado aqui por se
-distanciar da "família" de métodos de otimização que é apresentado neste
+completo é constituído por operações em uma matriz específica (Tableau), que
+representa o problema, o qual não é necessário ser apresentado aqui, por se
+distanciar da `família' de métodos de otimização que é apresentado neste
 documento.
 
 
-
-\hspace{0.8cm}
 
 \section{{Programando os Métodos}}
 
 \hspace{0.8cm}
 
-\textbf{Método de Newton}
+\subsection{Método de Newton}
 
-A forma mais simples e mais útil de implementar o método de Newton é na forma
-de busca das raízes, que uma vez  implementada, só precisamos por como entrada
+\hspace{0.8cm}
+A forma mais simples e mais útil de implementar o Método de Newton, é na forma
+de busca das raízes, que, uma vez implementada, só precisamos por como entrada
 a primeira e a segunda derivada da função que desejamos minimizar, já que o
 método não precisa saber qual a função de fato. A seguir temos a implementação
-na linguagem de programação Rust:
+na linguagem de programação \textit{Rust}:
 \vspace{0.2cm}
 \input{./projetos/rust_newton1x1.tex}
 
@@ -300,17 +300,26 @@ Os parâmetros da função são:
     \end{itemize}
 
 
-A função "derive1x1" recebe como parâmetro uma função e um ponto, tendo como
-retorno a derivada da função entregue, no ponto especificado. Restringindo-se
-à funções do tipo \(f : \mathbb{R} \rightarrow \mathbb{R}\), donde deve ser
-escrita pelo usuário como bem entender.
+A função \textit{derive1x1}, recebe como parâmetro uma função e um ponto,
+tendo como retorno, a derivada da função entregue, no ponto especificado.
+Restringindo-se à funções do tipo \(f : \mathbb{R} \rightarrow \mathbb{R}\).
 
 
-\textbf{Método do Gradiente Descendente}
+\subsection{Método do Gradiente Descendente}
 
-asd asdasd
+\hspace{0.8cm}
+A implementação desse método, exige apenas, que seja definido o cálculo
+da derivada da função objetivo, o valor de $\alpha$, um palpite inicial para
+o valor de x, e a quantidade de iterações desejada. Também, pode ser
+indicado um valor que se refere a diferença dos dois últimos valores
+da sequência \{$x_k$\}, podendo assim, efetuar a parada da execução do
+método. A seguir, temos a implementação na linguagem de programação
+\textit{C++}:
 
 \vspace{0.2cm}
 \input{./projetos/cpp_gradient1x1.tex}
+
+
+
 
 \textcolor[rgb]{1,0,0}{\section{{O Método de Newton para Várias Variáveis}}}
