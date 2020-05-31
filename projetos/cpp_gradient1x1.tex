@@ -1,0 +1,39 @@
+\begin{lstlisting}[language=C++]
+
+// Sendo f(x) = x^4 - 3*x^3 + 2
+#include <bits/stdc++.h>
+#define decimal long double
+using namespace std;
+// Calcula a derivada da funcao
+decimal df(decimal x) {
+	return 4 * pow(x, 3) - 9 * pow(x, 2);
+}
+int main() {
+	// Palpite inicial
+	decimal x_proximo = 5.5;
+	// Variavel para iterar
+	decimal x_atual;
+	// Quantidade maxima de iteracoes
+	int iteracoes = 100000;
+	decimal alpha = 0.00001;
+	// Precisao para condicao de parada
+	decimal precisao = 0.000000001;
+	// Comeca as iteracoes
+	while(iteracoes > 0) {
+		x_atual = x_proximo;
+		x_proximo = x_atual - (alpha * df(x_atual));
+		decimal precisao_atual = x_atual - x_proximo;
+		// Se atingir a precisao desejada
+		if(abs(precisao_atual) < precisao)
+			break; // Para as iteracoes
+		// Conclui uma iteracao
+		iteracoes -= 1;
+	}
+	cout << "x que minimiza f(x) = " << x_proximo << endl;
+	// Saida do algoritmo:
+	// --> x que minimiza f(x) = 2.25
+	return 0;
+}
+
+
+\end{lstlisting}
