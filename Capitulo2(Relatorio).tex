@@ -17,7 +17,7 @@
 %TODO: Falar de funções bem definidas
 
 \hspace{0.8cm}
-O Método de Newton, foi desenvolvido com o objetivo de econtrar estimativas
+O Método de Newton, foi desenvolvido com o objetivo de encontrar estimativas
 para as raízes de uma função. De modo que, a execução do método é feita de
 forma iterativa, repetindo sempre o mesmo processo, atualizando o mesmo valor.
 
@@ -170,18 +170,22 @@ baixo.
 Com o advento do Método de Newton, acabou surgindo uma família de métodos
 similares. E como foi visto, é possível a partir dele, encontrar tanto raízes
 de funções, quanto máximos/mínimos, herdando essa características para vários
-dos métodos que o derivaram. São estes, chamados de Métodos Quasi-Newton,
-que, olhando como ponto de partida o Método de Newton, fornecem uma grande
-flexibilidade em como deseja-se utilizar os recursos de presição e poder
-computacional.
+dos métodos que o derivaram. São estes, Métodos Quasi-Newton e Método do
+Gradiente Descendente, que, olhando como ponto de partida o Método de Newton, 
+fornecem uma grande flexibilidade em como deseja-se utilizar os recursos de
+precisão e poder computacional.
+
+Métodos Quasi-Newton se fazem necessários quando nem sempre se tem acesso ou
+recursos suficientes para se calcular a derivada de segunda ordem, ou até mesmo
+a de primeira ordem. Já os métodos do Gradiente Descendente, como sugerido pelo
+nome, utiliza-se majoritariamente da derivada de primeira ordem em seu processo.
 
 Ademais, vejamos alguns outros métodos de otimização:
 
 \subsection{Método do Gradiente Descendente}
 
-Este, classificado como um Método Quasi-Newton, resolve os mesmos tipos de
-problemas que os do método herdado. Considerando que o Método de Newton
-encontra o \(min(f(x))\) através de uma sequência \(\{x_k\}\):
+Considerando que o Método de Newton encontra o \(min(f(x))\) através de uma
+sequência \(\{x_k\}\):
 
 \begin{equation}
     x_{k+1} = x_{k} - \frac {f'(x_{k})}{f''(x_{k})}.
@@ -218,6 +222,114 @@ da função objetivo, ou até, podemos nem calculá-lo, basta considerar
 um \(\alpha\) fixo, e tão pequeno que, quando a restrição
 \ref{newton_restricao_alpha} não for cumprida, temos uma aproximação boa o
 suficiente para o minimo da função.
+
+Podemos assim dizer que esse modelo de resolução é útil e flexível o suficiente.
+Tendo isso em mente, podemos seguir para o problema de encontrar o melhor
+\(\alpha\), que já sabemos que sendo pequeno o suficiente minimiza a função, mas
+talvez não da melhor forma possível. Sabemos que o \(\alpha\) tem que regular o
+tamanho do passo. Ele pode ser usado em conjunto com outros elementos afim de
+otimizar o processo de otimização.
+
+Normalmente se é usado algum dos seguintes métodos para controlar o tamanho do
+passo:
+
+    \begin{itemize}
+            \item Um valor fixado para \(\alpha\);
+            \item Um método que atualize \(\alpha\) de acordo com alguma situação;
+            \item Um método que escolha um valor ótimo ou quase ótimo para \(\alpha\);
+            \item Um elemento que forneça mais informações sobre a função trabalhando em conjunto com o \(\alpha\).
+    \end{itemize}
+
+
+Simplesmente considerar um \(\alpha\) um valor fixo e pequeno pode funcionar,
+mas não seguramente para qualquer situação, como por exemplo uma função que
+possui "movimentos bruscos" em um escala minuscula, ou ainda, caso se tenha
+considerado um ponto inicial muito distante de qualquer ótimo que seja, o que
+faz com que o algoritmo seja absurdamente custoso.
+
+Atualizar o valor de \(\alpha\) de acordo com a situação do processo iterativo
+de otimização pode ser uma boa opção quando não se tem tanto pode computacional.
+Comumente pode ser encontrado implementações que iniciam com um \(\alpha\) não
+tão pequeno (isso ajuda a resolver o problema de iniciar com um ponto longe da 
+solução), mas ao passar das iterações, reduzir o seu valor por algum fator.
+Fator este que pode ser alguma relação com a magnitude da derivada, já que ela
+pode nos dar uma dica do quão longe o ótimo está do ponto atual, ou ainda
+considerar o fator de redução como a relação com a iteração atual:
+
+
+Considerando \(\alpha_{0} \in \mathbb{R}^{+}  \), e \(k\) a k-ésima iteração:
+
+\begin{equation}
+    \alpha_{k+1} = \frac{\alpha_{k}}{k}
+\end{equation}
+
+Ou ainda:
+
+\begin{equation}
+    \alpha_{k+1} = \frac{\alpha_{k}}{2} = \frac{\alpha_{0}}{2^k} 
+\end{equation}
+
+
+Quando começamos a observar outras formas de melhorar o valor de \(\alpha\),
+acabamos por entrar em uma recursão, pois dai começa todo um estudo sobre como
+otimizar um parâmetro específico de um otimizador. Os métodos mais famosos que
+buscam valores ótimos ou quase ótimos para \(\alpha\) são os métodos
+\textit{line search}. Os quais normalmente se trabalham com condições específicas
+sobre a otimalidade de \(\alpha\), como as condições de Wolfe por exemplo. Tais
+métodos utilizam-se dos artifícios citados anteriormente, já que são uma peça
+básica na construção do otimizador, ou ainda podem se utilizar de métodos fora
+dessa família de métodos newtonianos.
+
+Agora, antes de seguirmos para a analise de algum elemento de ajuda no valor, se
+faz necessária uma nova observação sobre a estrutura básica dos métodos. Até o
+momento viemos considerando apenas a derivada de primeira ordem como sendo a
+direção certa a ser tomada. Vamos tomar a seguinte equação:
+
+\begin{equation}
+    x_{k+1} = x_{k} - \alpha * \frac{1}{f''(x_k)} * f'(x_k)
+\end{equation}
+
+Se tomarmos \(\alpha = 1\) temos o método em sua forma natural. Mas ainda
+podemos procurar um valor para \(\alpha\) que melhore ainda mais a iteração.
+E mais, sabemos sobre as acusações que as derivadas de segunda ordem fazem,
+sobre a otimalidade, sendo assim podemos dizer que a direção de otimização,
+na verdade, é dada por:
+
+\begin{equation}
+    p_k = \beta(x_k) * f'(x_k)
+\end{equation}
+
+Então:
+
+\begin{equation}
+    x_{k+1} = x_{k} - \alpha * p_{k}
+\end{equation}
+
+
+Dai temos normalmente 3 opções no que se diz respeito ao \(\beta(x_k)\):
+
+A primeira é considerar \(\beta(x_k) \frac{1}{f''(x_k)}\), o que nos dá
+o método de Newton, novamente, e o \(\alpha\) não passaria de um mero ajuste.
+
+A segunda opção é considerar \(\beta(x_k) \approx \frac{1}{f''(x_k)}\), o que
+abre um leque de possibilidade no que diz respeito ao calculo dessa aproximação,
+e, tornando-se assim um método Quasi-Newton. Esse formato é um dos mais
+populares, sendo os métodos de otimização padrões em bibliotecas cientificas,
+como scipy em Python, e GSL em C. Sendo um dos mais famosos o método BFGS
+(Broyden-Fletcher-Goldfarb-Shanno).
+
+
+A terceira opção é considerar \(\beta(x_k) \) neutro, de forma que:
+\begin{equation}
+    p_k = \beta(x_k) * f'(x_k) = f'(x_k)
+\end{equation}
+
+Assim tendo um método do Gradiente Descendente, que como dito anteriormente,
+normalmente é resolvido por um método de \textit{line search}.
+
+
+
+
 
 
 \subsection{Simplex}
@@ -322,4 +434,4 @@ método. A seguir, temos a implementação na linguagem de programação
 
 
 
-\textcolor[rgb]{1,0,0}{\section{{O Método de Newton para Várias Variáveis}}}
+textcolor[rgb]{1,0,0}{\section{{O Método de Newton para Várias Variáveis}}}
