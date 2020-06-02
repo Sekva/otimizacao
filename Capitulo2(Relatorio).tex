@@ -171,7 +171,7 @@ Com o advento do Método de Newton, acabou surgindo uma família de métodos
 similares. E como foi visto, é possível a partir dele, encontrar tanto raízes
 de funções, quanto máximos/mínimos, herdando essa características para vários
 dos métodos que o derivaram. São estes, Métodos Quasi-Newton e Método do
-Gradiente Descendente, que, olhando como ponto de partida o Método de Newton, 
+Gradiente Descendente, que, olhando como ponto de partida o Método de Newton,
 fornecem uma grande flexibilidade em como deseja-se utilizar os recursos de
 precisão e poder computacional.
 
@@ -269,6 +269,35 @@ Ou ainda:
     \alpha_{k+1} = \frac{\alpha_{k}}{2} = \frac{\alpha_{0}}{2^k} 
 \end{equation}
 
+Vale a pena considerar os métodos mais famosos para tal tipo de atualização,
+que também podem ser chamadas de clássicos por serem um ponto inicial, como por
+exemplo, o método de Barzilai–Borwein, que pode ser considerado uma atualização
+ingenua, porém efetiva e barata de calcular, é dada pela seguinte expressão:
+
+\begin{equation}
+    \alpha_{k+1} = \frac{\langle \Delta x, \Delta g \rangle}{\langle \Delta g, \Delta g \rangle}
+\end{equation}
+
+Onde \( \langle \cdot, \cdot \rangle \) significa o produto interno entre
+vetores (sendo funções em uma variável apenas, podemos considerar um vetor de
+apenas uma entrada) e:
+
+\begin{equation}
+    \Delta x = x_k - x_{k-1}
+\end{equation}
+\begin{equation}
+    \Delta g = g_k - g_{k-1}
+\end{equation}
+
+
+Podemos considerar \(g_k = f'(x_k) \), que nos entrega a noção de direção de
+descida, noção essa que ainda pode ser melhorada, como veremos mais a frente.
+Então, por agora, podemos ficar com a ideia de que \(g_k\) é a direção de
+descida apenas, independente da forma com que foi obtida.
+
+%TODO: Applied Optimization] Liqun Qi, Kok Lay Teo, Xiao Qi Yang - Optimization and control with applications (2005, Springer) - libgen.lc.pdf, pag 277 do pdf
+Tem-se mais alguns métodos semelhantes, como um gerados pelos estudos de
+Fletcher e Reeves em 1964, e o método Polak-Ribière em 1997.
 
 Quando começamos a observar outras formas de melhorar o valor de \(\alpha\),
 acabamos por entrar em uma recursão, pois dai começa todo um estudo sobre como
