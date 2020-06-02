@@ -5,52 +5,53 @@
 % Capítulo 2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% TODO: usar aspas duplas
 
 \chapter{\Large{Métodos Clássicos de Otimização}}\label{chp:2}
 
 
 \section{{O Método de Newton}}
 
+% TODO: Adicionar texto entre o início do cap e início da sessao
+% Talvez falar sobre newton, sobre a criação do método, e tals
+% Fazer a introdução
 
 \subsection{Entendendo o Método}
-
-%TODO: Falar de funções bem definidas
 
 \hspace{0.8cm}
 O Método de Newton, foi desenvolvido com o objetivo de encontrar estimativas
 para as raízes de uma função. De modo que, a execução do método é feita de
 forma iterativa, repetindo sempre o mesmo processo, atualizando o mesmo valor.
 
-Este método faz uso do recurso de derivação, existindo, uma relação muito
-forte com o ângulo da reta tangente ao ponto, na função. Ademais, é
-importante ressaltar, que é necessário um palpite inicial, que represente
-o valor de \textit{x}, no qual, partindo desse valor, será buscado a raiz.
-E com isso, vamos entender como o dado método funciona.
+Este método faz uso do recurso de derivação. Existindo uma relação muito
+forte com o ângulo da reta tangente à curva, que é o gráfico da função que
+foi derivada. Ademais, é importante ressaltar a necessidade de um "palpite"
+inicial, que represente o valor de \textit{x}, para o qual será buscado uma
+estimativa da raiz. E com isso vamos entender como o método funciona.
 
-Partindo do princípio do método, o objetivo, será utilizar a reta tangente a um
-ponto, para gerar valores cada vez mais próximos da raiz daquela função. De
-modo que, será analisado a interseção da reta tangente com o eixo das
-abscissas. E sendo, a diferença do valor x da entrada da função com o valor da
-fração entre a função e sua derivada no mesmo ponto, o novo valor de entrada na
-função, construindo assim várias iterações, gerando valores cada vez mais
-próximos da raiz. Como será visto, a seguir:
+O método em princípio consiste na utilização da reta tangente à um
+ponto sobre à curva, para gerar valores cada vez mais próximos da raiz
+daquela função. Analisamos a interseção da reta tangente com o eixo das
+abscissas. Obtendo o ponto P1($x_p$, $y_p$). O novo valor de entrada na função
+será construído com base nas coordenadas desse ponto.
 
-Já sabido que a equação da reta é dada como:
+A equação da reta que passa por um ponto de coordenada ($x_0$, $y_0$) é dada
+por:
 
 \begin{equation}
     (y - y_0) = m(x - x_0).
 \end{equation}
 
 E levando em conta que temos como objetivo encontrar $x$, que é um ponto
-sobreposto no eixo x, podemos considerar $y=0$, logo:
+sobreposto no eixo x, podemos considerar $y=0$. Logo:
 
 \begin{equation}
     -y_0=m(x-x_0).
 \end{equation}
 
-Com isso, sabemos que $y_0$ é a imagem da função $f(x_0)$, e $m$ representa o
-ângulo da reta tangente ao ponto $x_0$, ou seja: $m=f'(x_0)$. Desenvolvendo
-essa equação, temos:
+Com isso sabemos que $y_0$ é a imagem da função $f(x_0)$, e $m$ representa o
+ângulo da reta tangente ao ponto ($x_0$, $y_0$). Como vimos no Capítulo 1,
+ $m=f'(x_0)$. Desenvolvendo essa equação, temos:
 
 \begin{equation}
     -f(x_0) = f'(x_0)(x-x_0),
@@ -72,9 +73,10 @@ essa equação, temos:
     x = x_0 - \frac {f(x_0)}{f'(x_0)}.
 \end{equation}\\
 
-E com isso, exemplificando em um gráfico, temos que, sendo $f(x)=-x^2+2x$, o
-palpite inicial $x_0=1.5$, $P1$ sendo o ponto que representa $x_0$ aplicado
-a função $f$ e $x1$ a interseção da reta tangente à $P1$ com o eixo x.
+Exemplificaremos no gráfico a seguir. Considerando a função $f(x)=-x^2+2x$, e
+que o palpite inicial é $x_0=1.5$. $P1$ representa o ponto quando aplicamos
+$x_0$ a $f(x)$. Podemos observar que como fruto da intersecção da reta tangente em azul
+encontramos o valor $x_1$ que será usado na próxima iteração.
 
 \begin{figure}[ht]
     \includegraphics[width=0.55\textwidth]
@@ -87,21 +89,29 @@ a função $f$ e $x1$ a interseção da reta tangente à $P1$ com o eixo x.
 \end{figure}
 
 
-E a partir do dado gráfico, agora podemos entender melhor como a iteração
-funcionará, pois, o valor gerado, $x_1$, será aplicado no mesmo método. E com
-isso, podemos construir a seguinte equação:
+Agora podemos entender melhor como a iteração funcionará. O valor
+gerado, $x_1$, será aplicado no mesmo procedimento. E, a partir disso,
+poderemos construir as seguintes equações:
+
+\begin{equation}
+    x_{1} = x_{0} - \frac {f(x_{0})}{f'(x_{0})},
+\end{equation}
 
 \begin{equation}
     x_{k+1} = x_{k} - \frac {f(x_{k})}{f'(x_{k})}.
     \label{newton_primeiraDeriv}
 \end{equation}
 
-Desse modo, gera-se uma sequência $\{x_k\}$, donde, esta, converge para a
-raiz da função. E nesse sentido, vejamos a próxima iteração (Figura
-\ref{MetodoNewton_grafico_2}) do exemplo mostrado na Figura
-\ref{MetodoNewton_grafico_1}.
+% TODO: Provar o Teorema de Convergência do Método de Newton, escrever o
+%teorema lá no final (do tópico ou do capítulo)
 
-\begin{figure}[ht]
+Desse modo, gera-se uma sequência $\{x_k\}$, que deve convergir para a
+raiz da função (este é o cerne do Teorema de Convergência do Método de Newton).
+Reconsiderando a função $f(x)$ do exemplo mostrado na Figura
+\ref{MetodoNewton_grafico_1}, encontramos a pŕoxima iteração que apresentamos
+na Figura \ref{MetodoNewton_grafico_2}:
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.55\textwidth]
       {src/MetodoNewton_grafico_2.png}
@@ -111,34 +121,46 @@ raiz da função. E nesse sentido, vejamos a próxima iteração (Figura
     \label{MetodoNewton_grafico_2}
 \end{figure}
 
-E assim, podemos notar a aproximação de $x_k$ para a raiz de $f$, observando o
-ponto $x_2$.
+\newpage
+Podemos notar que $x_2$ é um ponto mais próximo da raiz $f(x)$ do que $x_1$
+ou $x_0$. O que evidencia a provável convergência da sequência $x_k$ para a
+raiz.
 
-Ademais, é válido ressaltar que o denominador da equação
+É válido ressaltar que o denominador da equação
 \ref{newton_primeiraDeriv} tem que ser diferente de 0 (ou seja, a reta tangante
-num ponto $P$ não pode ser paralela ao eixo x). No entanto, caso contrário,
-isso significa que a dada função não possui raiz na proximidade daquele ponto.
+num ponto $P$ não pode ser paralela ao eixo x). Caso contrário, teríamos
+que a dada função não possui raiz na proximidade daquele ponto. Ademais, o
+palpite, denotado por $x_0$, deve ser suficientemente próximo das raizes, para
+garantir cerelidade da convergência.
+
+Para aprimorar os resultados expostos, descrevemo-los como no seguinte teorema:
+
+aloo
+% TODO: Escrever aqui o teorema de Newton e a demonstração
+
 
 \subsection{Encontrando Mínimos}
 
-E é dessa maneira que, agora, podemos utilizar este método para encontrar
-mínimos de uma função. Vimos que, o Método de Newton calcula raízes, e
-desse modo, vinculando o que foi estudado no Capítulo 1, sabemos que, os
-mínimos de uma função podem ser representados como raízes de sua derivada.
+% TODO: Arruamar esse paragrafo
+
+\hspace{0.8cm}
+Agora podemos utilizar este método para encontrar mínimos de uma função.
+O Método de Newton calcula raízes. É possível vincular isto, com o que
+foi estudado no Capítulo 1. Obtemos os mínimos de uma função que como vimos
+podem ser representados como raízes de sua derivada. Considerando $g(x)$ uma
+função duas vezes diferenciável, e tendo como objetivo encontrar seus pontos
+de mínimo, pode-se utilizar o Método de Newton para resolver tal problema o
+que gera a seguinte sequência:
 
 %TODO: Falar mais/melhor sobre a sequencia {x_k} (tendencia ao 0 da função)
 
-Então, dado que as raízes de $f(x)$ podem ser geradas a partir da equação
-\ref{newton_primeiraDeriv}, temos que: considerando $g(x)$ uma função duas vezes
-derivável, e tendo como objetivo encontrar seus pontos de mínimo, pode-se
-utilizar o Método de Newton para resolver tal problema da seguinte forma:
-
 \begin{equation}
     x_{k+1} = x_{k} - \frac {g'(x_{k})}{g''(x_{k})}.
+    \label{convergencia_segundaDeriva}
 \end{equation}
 
-Encontrando então as raízes aproximadas de sua derivada, e considerando
-estas como  $x^*$, temos então que:
+A convergência da sequência \ref{convergencia_segundaDeriva}, é um valor $x^*$
+que satisfaz a equação:
 
 \begin{equation}
     g'(x^*) = 0.
@@ -150,10 +172,11 @@ inicial, mas tem seu destaque, que é ser, facilmente computável.
 Problemas de maximização podem ser vistos sob o seguinte olhar:
 
 \begin{equation}
-    max(f(x)) = min(-1 * f(x))
+    max(f(x)) = min(-1 * f(x)).
 \end{equation}
 
-Que com isto podem ser otimizados pelo Método de Newton também.
+O que faz com que o Método de Newton possa ser utilizado em ambos sentidos no
+processo de otimizar.
 
 O movimento de \(x_k\) dentro da sequência, é determinado pela relação das
 quantidades e propriedades, que tanto a primeira quanto a segunda derivada
@@ -167,6 +190,7 @@ baixo.
 
 \section{{Outros Métodos}}
 
+\hspace{0.8cm}
 Com o advento do Método de Newton, acabou surgindo uma família de métodos
 similares. E como foi visto, é possível a partir dele, encontrar tanto raízes
 de funções, quanto máximos/mínimos, herdando essa características para vários
@@ -275,35 +299,36 @@ Ou ainda:
     \alpha_{k+1} = \frac{\alpha_{k}}{2^k} = \frac{\alpha_{0}}{1}.
 \end{equation}
 
-Vale a pena considerar os métodos mais famosos para tal tipo de atualização,
+Vale a pena ressaltar os métodos mais famosos para tal tipo de atualização,
 que também podem ser chamadas de clássicos por serem um ponto inicial, como por
 exemplo, o método de Barzilai–Borwein, que pode ser considerado uma atualização
-ingenua, porém efetiva e barata de calcular, é dada pela seguinte expressão:
+ingenua, porém efetiva e barata de realizar o cálculo. É dada pela seguinte expressão:
 
 \begin{equation}
-    \alpha_{k+1} = \frac{\langle \Delta x, \Delta g \rangle}{\langle \Delta g, \Delta g \rangle}
+    \alpha_{k+1} = \frac{\langle \Delta x, \Delta g \rangle}{\langle \Delta g, \Delta g \rangle}.
 \end{equation}
 
-Onde \( \langle \cdot, \cdot \rangle \) significa o produto interno entre
+Onde, \( \langle \cdot, \cdot \rangle \), significa o produto interno entre
 vetores (sendo funções em uma variável apenas, podemos considerar um vetor de
-apenas uma entrada) e:
+apenas uma entrada), e:
 
 \begin{equation}
-    \Delta x = x_k - x_{k-1}
+    \Delta x = x_k - x_{k-1},
 \end{equation}
 \begin{equation}
-    \Delta g = g_k - g_{k-1}
+    \Delta g = g_k - g_{k-1}.
 \end{equation}
 
 
-Podemos considerar \(g_k = f'(x_k) \), que nos entrega a noção de direção de
-descida, noção essa que ainda pode ser melhorada, como veremos mais a frente.
+Podemos considerar que \(g_k = f'(x_k) \) nos entrega a noção de direção de
+descida, noção essa, que ainda pode ser melhorada, como veremos mais a frente.
 Então, por agora, podemos ficar com a ideia de que \(g_k\) é a direção de
 descida apenas, independente da forma com que foi obtida.
 
 %TODO: Applied Optimization] Liqun Qi, Kok Lay Teo, Xiao Qi Yang - Optimization and control with applications (2005, Springer) - libgen.lc.pdf, pag 277 do pdf
-Tem-se mais alguns métodos semelhantes, como um gerados pelos estudos de
-Fletcher e Reeves em 1964, e o método Polak-Ribière em 1997.
+Tem-se mais alguns métodos semelhantes, como um gerado pelos estudos de
+Fletcher e Reeves em 1964, e o método Polak-Ribière em 1997
+\ref{AppliedOptimization}.
 
 Quando começamos a observar outras formas de melhorar o valor de \(\alpha\),
 acabamos por entrar em uma recursão, pois, daí, começa todo um estudo sobre como
