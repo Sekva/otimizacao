@@ -75,8 +75,8 @@ Com isso sabemos que $y_0$ é a imagem da função $f(x_0)$, e $m$ representa o
 
 Exemplificaremos no gráfico a seguir. Considerando a função $f(x)=-x^2+2x$, e
 que o palpite inicial é $x_0=1.5$. $P1$ representa o ponto quando aplicamos
-$x_0$ a $f(x)$. Podemos observar que como fruto da intersecção da reta tangente em azul
-encontramos o valor $x_1$ que será usado na próxima iteração.
+$x_0$ a $f(x)$. Podemos observar que como fruto da intersecção da reta tangente
+em azul encontramos o valor $x_1$ que será usado na próxima iteração.
 
 \begin{figure}[ht]
     \includegraphics[width=0.55\textwidth]
@@ -193,11 +193,11 @@ baixo.
 \hspace{0.8cm}
 Com o advento do Método de Newton, acabou surgindo uma família de métodos
 similares. E como foi visto, é possível a partir dele, encontrar tanto raízes
-de funções, quanto máximos/mínimos, herdando essa características para vários
-dos métodos que o derivaram. São estes, Métodos Quasi-Newton e Método do
-Gradiente Descendente, que, olhando como ponto de partida o Método de Newton,
-fornecem uma grande flexibilidade em como deseja-se utilizar os recursos de
-precisão e poder computacional.
+de funções, quanto máximos ou mínimos, tal característica é herdada pelos vários
+métodos que deviram dele. Dentre eles temos; Métodos Quasi-Newton e Método do
+Gradiente Descendente. Tais métodos podem ser vistos como uma complementação ao
+Método de Newton, no entanto, esses fornecem uma grande flexibilidade em
+como deseja-se utilizar os recursos de precisão e poder computacional.
 
 Métodos Quasi-Newton se fazem necessários, quando nem sempre se tem acesso ou
 recursos suficientes para se calcular a derivada de segunda ordem, ou até mesmo
@@ -205,26 +205,32 @@ a de primeira ordem. Já os métodos do Gradiente Descendente, como sugerido pel
 nome, utiliza-se majoritariamente, da derivada de primeira ordem em seu
 processo.
 
-Ademais, vejamos alguns outros métodos de otimização:
+% TODO: Está escrito por ordem de apresentação por paragrafo::::
+% TODO: Citaritar nossos métodos [colocar que serão explicados melhor no cap tal])
+% TODO: Falar sobre o Simplex aqui e outros métodos
+% TODO: Informar que vamos falar especificamente dos 3 metodoss(newton,
+% gradiente e simplex)
+Os quais, descreveremos em alguma escala nas sessões seguintes.
 
-\subsection{Método do Gradiente Descendente}
+\subsection{Métodos Quasi-Newton e Gradiente Descendente}
 
-Considerando que o Método de Newton encontra o \(min(f(x))\) através de uma
-sequência \(\{x_k\}\):
+\hspace{0.8cm}
+Aqui voltaremos a considerar uma função $f(x)$. E considerando que o Método
+de Newton encontra o \(min(f(x))\) através de uma sequência \(\{x_k\}\):
 
 \begin{equation}
     x_{k+1} = x_{k} - \frac {f'(x_{k})}{f''(x_{k})}.
 \end{equation}
 
-No qual, pode ser reescrito da seguinte forma:
+A qual, pode ser reescrita da seguinte forma:
 
 \begin{equation}
     x_{k+1} = x_{k} -  \frac{1}{f''(x)} * f'(x_{k}).
 \end{equation}
 
-E, ressaltando que, sabemos que quem determina a direção da convergência é
-\(f'(x)\), não é completamente necessário o uso de \( \frac{1}{f''(x)} \), que
-tem como principal papel de controlar o tamanho do `passo dado' na iteração.
+Sabemos que quem determina a direção da convergência é \(f'(x)\), portanto
+não é completamente necessário o uso de \( \frac{1}{f''(x)} \), que
+tem como principal papel controlar o tamanho do `passo dado' na iteração.
 De modo que, a maioria dos Métodos Quasi-Newton fazem a substituição
 da dada fração por aproximações boas o suficiente. E com isso, levando em
 conta $\alpha$ como a representação dessa aproximação, temos:
@@ -237,7 +243,7 @@ conta $\alpha$ como a representação dessa aproximação, temos:
 Onde \(\alpha\) satisfaz:
 
 \begin{equation}
-    f(x_{k} -  \alpha * f'(x_{k})) < f(x_{x}).
+    f(x_{k+1}) = f(x_{k} -  \alpha * f'(x_{k})) < f(x_{x}).
     \label{newton_restricao_alpha}
 \end{equation}
 
@@ -245,18 +251,18 @@ A partir da equação \ref{newton_lambda}, podemos escolher um \(\alpha\), de
 modo que, seja menos custoso encontrá-lo do que calcular a segunda derivada
 da função objetivo, ou até, podemos nem calculá-lo, basta considerar
 um \(\alpha\) fixo, e tão pequeno que, quando a restrição
-\ref{newton_restricao_alpha} não for cumprida, temos uma aproximação boa o
+\ref{newton_restricao_alpha} não for cumprida, já temos uma aproximação boa o
 suficiente para o mínimo da função.
 
-Podemos assim, dizer que, esse modelo de resolução é útil e flexível o
+Podemos dizer que, esse modelo de resolução é útil e flexível o
 suficiente. Tendo isso em mente, e seguindo para o problema de encontrar
-o melhor \(\alpha\), donde, já sabemos que sendo um valor pequeno o
+o melhor \(\alpha\), já sabemos que sendo um valor pequeno o
 suficiente, minimiza a função (mas, não da melhor forma). Já é sabido
 que o \(\alpha\) tem como propósito, regular o tamanho do passo dado nas
 iterações. Ele pode ser usado em conjunto com outros elementos, afim de
 otimizar o processo de otimização.
 
-Normalmente, é usado algum dos seguintes métodos para controlar o tamanho do
+Comumente usamos algum dos seguintes métodos para encontrar o tamanho do
 passo:
 
     \begin{itemize}
@@ -266,15 +272,16 @@ passo:
             \item Um método que escolha um valor ótimo ou quase ótimo para
                 \(\alpha\);
             \item Um elemento que forneça mais informações sobre a função,
-                trabalhando em conjunto com o \(\alpha\).
+                trabalhando em conjunto com algum \(\alpha\) definido nos
+                métodos anteriores.
     \end{itemize}
 
 
-Simplesmente considerar a \(\alpha\) um valor fixo e pequeno, pode funcionar,
+Simplesmente considerando \(\alpha\) fixo e pequeno pode funcionar,
 mas não seguramente para qualquer situação. Como por exemplo, uma função que
 possui `movimentos bruscos', em um escala minúscula. Ou ainda, caso se tenha
-considerado um ponto inicial muito distante, de qualquer ótimo, resultando,
-em um funcionamento extremamente custoso, do algoritmo.
+considerado um ponto inicial muito distante de qualquer ótimo, resultando
+em um funcionamento extremamente custoso do algoritmo.
 
 Atualizar o valor de \(\alpha\), de acordo com a situação do processo iterativo
 de otimização, pode ser uma boa opção, quando não se tem tanto poder
@@ -284,39 +291,38 @@ iniciar com um ponto longe da solução), mas ao passar das iterações,
 reduz-se o seu valor por algum fator. Fator este, que pode ter alguma relação
 com a magnitude da derivada, já que, ela pode nos dar uma dica do quão longe
 o ótimo está do ponto atual, ou ainda, considerar o fator de redução havendo
-uma relação com iteração atual:
-
-
-Considerando \(\alpha_{0} \in \mathbb{R}^{+}  \), e \(k\) a k-ésima iteração:
-
+uma relação com a iteração atual. Como por exemplo se considerarmos um
+\(\alpha_0 \in \mathbb{R}^{+}\) e \(k \in \mathbb{N} \) poderemos considerar
+a k-ésima iteração como:
+% TODO: Colocar referencias aqui e em todo o resto
 \begin{equation}
-    \alpha_{k+1} = \frac{\alpha_{k}}{k}.
+    \alpha_{k+1} = \frac{\alpha_{k}}{k},
 \end{equation}
-
-Ou ainda:
+ou ainda:
 
 \begin{equation}
-    \alpha_{k+1} = \frac{\alpha_{k}}{2^k} = \frac{\alpha_{0}}{1}.
+    \alpha_{k+1} = \frac{\alpha_{0}}{2^k}.
 \end{equation}
 
 Vale a pena ressaltar os métodos mais famosos para tal tipo de atualização,
 que também podem ser chamadas de clássicos por serem um ponto inicial, como por
 exemplo, o método de Barzilai–Borwein, que pode ser considerado uma atualização
-ingenua, porém efetiva e barata de realizar o cálculo. É dada pela seguinte expressão:
+ingenua, porém efetiva e barata de realizar o cálculo. O \(\alpha\) é dado
+pela seguinte expressão:
 
 \begin{equation}
-    \alpha_{k+1} = \frac{\langle \Delta x, \Delta g \rangle}{\langle \Delta g, \Delta g \rangle}.
+    \alpha_{k+1} = \frac{\langle \Delta x, \Delta g \rangle}
+        {\langle \Delta g, \Delta g \rangle},
 \end{equation}
-
-Onde, \( \langle \cdot, \cdot \rangle \), significa o produto interno entre
-vetores (sendo funções em uma variável apenas, podemos considerar um vetor de
-apenas uma entrada), e:
+onde \( \langle \cdot, \cdot \rangle \) significa o produto interno entre
+vetores (no caso de funções que possuem uma variável apenas, podemos
+considerar um vetor de apenas uma entrada), e:
 
 \begin{equation}
-    \Delta x = x_k - x_{k-1},
-\end{equation}
-\begin{equation}
-    \Delta g = g_k - g_{k-1}.
+    \begin{array}{ccc}
+        \Delta x& = &x_k - x_{k-1},\\
+        \Delta g& = &g_k - g_{k-1}.
+    \end{array}
 \end{equation}
 
 
@@ -325,23 +331,23 @@ descida, noção essa, que ainda pode ser melhorada, como veremos mais a frente.
 Então, por agora, podemos ficar com a ideia de que \(g_k\) é a direção de
 descida apenas, independente da forma com que foi obtida.
 
-%TODO: Applied Optimization] Liqun Qi, Kok Lay Teo, Xiao Qi Yang - Optimization and control with applications (2005, Springer) - libgen.lc.pdf, pag 277 do pdf
-Tem-se mais alguns métodos semelhantes, como um gerado pelos estudos de
-Fletcher e Reeves em 1964, e o método Polak-Ribière em 1997
-\ref{AppliedOptimization}.
+%TODO: Applied Optimization] Liqun Qi, Kok Lay Teo, Xiao Qi Yang - Optimization
+%and control with applications (2005, Springer) - libgen.lc.pdf, pag 277 do pdf
+Tem-se mais alguns métodos semelhantes, como o método Polak-Ribière 1997 e
+outro gerado pelos estudos de Fletcher e Reeves 1964. \ref{AppliedOptimization}.
 
 Quando começamos a observar outras formas de melhorar o valor de \(\alpha\),
-acabamos por entrar em uma recursão, pois, daí, começa todo um estudo sobre como
+acabamos por entrar em uma recursão, pois começa um estudo sobre como
 otimizar um parâmetro específico de um otimizador. Os métodos mais famosos que
-buscam valores ótimos ou quase ótimos para \(\alpha\), são os métodos
+buscam valores ótimos, ou quase ótimos para \(\alpha\), são os métodos
 classificados como \textit{line search}. Os quais, normalmente, trabalham
-com condições específicas, sobre a otimalidade de \(\alpha\), como as condições
-de Wolfe, por exemplo. Tais métodos, utilizam-se dos artifícios citados
+com condições específicas sobre a otimalidade de \(\alpha\), como as condições
+de Wolfe. Tais métodos utilizam-se dos artifícios citados
 anteriormente, já que, são uma peça básica na construção do otimizador,
 ou ainda, podem utilizar métodos fora da família dos newtonianos.
 
 Agora, antes de seguirmos para a analise de estatégias para obter um melhor
-resultado, se faz necessária uma nova observação, sobre a estrutura básica
+resultado, se faz necessária uma nova observação sobre a estrutura básica
 dos métodos. Até o momento, viemos considerando apenas a derivada de primeira
 ordem como sendo a direção certa a ser tomada. Vamos observar a seguinte
 equação:
@@ -350,79 +356,77 @@ equação:
     x_{k+1} = x_{k} - \alpha * \frac{1}{f''(x_k)} * f'(x_k).
 \end{equation}
 
-Se tomarmos \(\alpha = 1\), temos o método em sua forma natural. Mas,
-podemos procurar um valor para \(\alpha\), que melhore ainda mais a iteração.
-E complementando, sabemos sobre as acusações que a derivada de segunda ordem
-faz sobre a otimalidade, sendo assim, podemos dizer que a direção de otimização,
-na verdade, é dada por:
+Se tomarmos \(\alpha = 1\), temos o método em sua forma natural. Mas
+podemos procurar um valor para \(\alpha\) que melhore ainda mais a iteração.
+E, complementando, sabemos sobre as acusações que a derivada de segunda ordem
+faz sobre a otimalidade, com isso podemos dizer que a direção de otimização
+em verdade é dada por:
 
 \begin{equation}
-    p_k = \beta(x_k) * f'(x_k).
+    g_k = \beta(x_k) * f'(x_k).
 \end{equation}
 
-Então:
+Então podemos reescrever a sequência de iteração na seguinte forma:
 
 \begin{equation}
-    x_{k+1} = x_{k} - \alpha * p_{k}.
+    x_{k+1} = x_{k} - \alpha * g_{k}.
 \end{equation}
 
 
-Daí, temos normalmente 3 opções no que se diz respeito ao \(\beta(x_k)\):
+Daí, temos normalmente três opções no que diz respeito ao \(\beta(x_k)\),
+que são:
 
-\begin{itemize}
+\begin{enumerate}
 
-    \item A primeira, é considerar \(\beta(x_k) = \frac{1}{f''(x_k)}\), o que
+    \item Considerar \(\beta(x_k) = \frac{1}{f''(x_k)}\). O que
         nos dá o Método de Newton novamente, e o \(\alpha\) não passaria de
         um mero ajuste;
 
-    \item A segunda, é considerar
-        \(\beta(x_k) \approx \frac{1}{f''(x_k)}\), o que abre um leque de
-        possibilidade no que diz respeito ao cálculo dessa aproximação,
-        e, tornando-se assim um método Quasi-Newton. Sendo, esse formato, um dos
-        mais populares, de modo que, são aplicados no métodos de otimização
-        padrões em bibliotecas cientificas, como \textit{scipy} em Python,
-        e \textit{GSL} em C. Sendo um dos mais famosos o método BFGS
+    \item Considerar
+        \(\beta(x_k) \approx \frac{1}{f''(x_k)}\). O que abre um leque de
+        possibilidades no que diz respeito ao cálculo dessa aproximação
+        e tornando-o assim num método Quasi-Newton. Sendo esse formato um dos
+        mais populares. São aplicados nos métodos de otimização
+        padrão em bibliotecas cientificas, como \textit{scipy} em Python,
+        e \textit{GSL} em C. Tendo como um dos mais famosos o método BFGS
         (Broyden-Fletcher-Goldfarb-Shanno).
 
-    \item A terceira, é considerar \(\beta(x_k) \) neutro, de forma que:
-        \begin{equation}
-            p_k = \beta(x_k) * f'(x_k) = f'(x_k)
-        \end{equation}
+    \item Considerar \(\beta(x_k) \) neutro. O que possibilita considerar
+        \(g_k\) = \(f'(x_k)\). Dando-nos o Método do Gradiente Descendente
+        que, como dito anteriormente, normalmente é resolvido usando a
+        estratégia de \textit{line search}.
 
-\end{itemize}
-
-Assim, tendo o Método do Gradiente Descendente, que, como dito anteriormente,
-normalmente é resolvido usando a estratégia de \textit{line search}.
-
+\end{enumerate}
 
 \subsection{Simplex}
 
 \hspace{0.8cm}
-O método Simplex, pode ser classificado como clássico, por ser um
+O Método Simplex pode ser classificado como clássico, por ser um
 dos métodos mais famosos. Formulado por George B. Dantzig, fruto de uma
-sugestão de outro homem, T. S. Motzkin, que contribuiu para diversas áreas da
+sugestão de T. S. Motzkin, que contribuiu para diversas áreas da
 matemática.
 
-Os problemas que o método Simplex resolve, fazem parte de uma conjunto de
-problemas de Otimização Linear (ou Programação Linear), os quais se restringem
-a, apenas, funções lineares. Além disso, tais problemas normalmente acompanham
-restrições, sobre as entradas da função a ser otimizada.
+Os problemas que o Método Simplex resolve fazem parte de um conjunto de
+problemas de Otimização Linear (ou Programação Linear). Os quais se restringem
+apenas funções lineares. Além disso, tais problemas genericamente acompanham
+restrições sobre as entradas da função a ser otimizada.
 
-Um problema de otimização linear, pode ser resumido em:
+Um problema de otimização linear pode ser transcrito da seguinte forma.
+Considerando a função objetivo:
 
 \begin{equation}
-        Z = c_1x_1 + c_2x_2 + … + c_nx_n
+        Z = c_1x_1 + c_2x_2 + … + c_nx_n,
 \end{equation}
+e tendo restrições também lineares para a função objetivo, como por exemplo:
 
-E tendo restrições também lineares para a função objetivo, como:
 \begin{equation}
-    \begin{split}
-        &   a_{11}x_1 + a_{12}x_2 + … + a_{1n}x_n \leq b_1\\
-        &   a_{21}x_1 + a_{22}x_2 + … + a_{2n}x_n \leq b_2\\
+    \begin{array}{ccc}
+        &   a_{11}x_1 + a_{12}x_2 + … + a_{1n}x_n \leq b_1,\\
+        &   a_{21}x_1 + a_{22}x_2 + … + a_{2n}x_n \leq b_2,\\
         &   ...\\
-        &   a_{m1}x_1 + a_{m2}x_2 + … + a_{mn}x_n \leq b_m\\
-        &   x_1 \geq 0, x_2 \geq 0, …, x_n \geq 0
-    \end{split}
+        &   a_{m1}x_1 + a_{m2}x_2 + … + a_{mn}x_n \leq b_m.\\\\
+        &   x_1 \geq 0, x_2 \geq 0, …, x_n \geq 0.
+    \end{array}
 \end{equation}
 
 O tipo de problema que o Simplex resolve, se desenvolve como a seguir:
@@ -432,69 +436,77 @@ O tipo de problema que o Simplex resolve, se desenvolve como a seguir:
 \end{equation}
 
 
-A forma de operação desse método é semelhante ao que uma pessoa comumente faria
-ao se deparasse com o problema de forma gráfica. O problema, sendo
-completamente linear, gera retas, que acabam por formando regiões de
-possíveis soluções, e dessas regiões, queremos saber qual a melhor solução.
-Para isso, bastaria procurar dentro de tal região, onde o valor da função Z é o
-maior possível. Uma vez a região sendo construída por retas, acaba por
-ter a característica de ser convexa, como um polígono convexo no plano ou um
-poliedro convexo no espaço, o que a acaba por facilitar a busca pelo máximo,
-dentro dessa região, uma vez que basta olha os vértices de tal região.
+A forma de operação desse método é semelhante ao que uma pessoa comumente
+faria ao se deparar com o problema de forma gráfica. O problema, que é
+completamente linear, gera retas que acabam por formar regiões de
+possíveis soluções, e dessas regiões, o que queremos é saber qual a melhor
+solução. Para isso, bastaria procurar dentro de tal região, onde o valor da
+função objetivo Z é o maior possível. Uma vez que a região tenha sido
+construída pelas retas, teremos a característica de ser convexa, como um
+polígono convexo no plano ou um poliedro convexo no espaço. O que acaba
+facilitando a busca pelo máximo, dentro dessa região, uma vez que basta olhar
+os vértices de tal região. Esses fatos podem ser provados e tais demonstrações
+podem ser encontradas em [??].
+% TODO: Colocar aqui uma boa referência (ou mais de uma)
 
-Repara-se, que, o método Simplex não se utiliza de artifícios e ferramentas do
-Cálculo, como nos métodos anteriormente apresentados, mas sim, formas
+Repara-se que o Método Simplex não se utiliza de artifícios e ferramentas do
+Cálculo, como nos métodos anteriormente apresentados, mas sim, de formas
 diferentes de analisar o problema, que por certos aspectos é simples. O método
-completo é constituído por operações em uma matriz específica (Tableau), que
-representa o problema, o qual não é necessário ser apresentado aqui, por se
-distanciar da `família' de métodos de otimização que é apresentado neste
-documento.
-
+completo é constituído por operações em uma matriz específica, denominada
+Tableau, que representa o problema, o qual não é necessário ser apresentado
+aqui, por se distanciar da `família' de métodos de otimização que é nos
+interessa apresentar.
 
 
 \section{{Programando os Métodos}}
 
-\hspace{0.8cm}
+% TODO: Colocar um texto aqui introduzindo o tópico
+% Podemos falar de linguagens, e tals;;; Podemos falar também sobre as
+% dificuldades de representar um método de otimização. Falar também das
+% vantagens de utilizar tal linguagem
 
+\hspace{0.8cm}
 \subsection{Método de Newton}
 
 \hspace{0.8cm}
-A forma mais simples e mais útil de implementar o Método de Newton, é na forma
-de busca das raízes, que, uma vez implementada, só precisamos por como entrada
-a primeira e a segunda derivada da função que desejamos minimizar, já que o
-método não precisa saber qual a função de fato. A seguir temos a implementação
-na linguagem de programação \textit{Rust}:
+A forma mais simples e mais útil de implementar o Método de Newton é na
+busca das raízes da derivada da função objetivo. Que uma vez implementada
+precisamos por como entrada a primeira e a segunda derivada da função que
+desejamos minimizar, já que o método não precisa saber qual a função de fato.
+A seguir temos a implementação na linguagem de programação \textit{Rust}:
 \vspace{0.2cm}
 \input{./projetos/rust_newton1x1.tex}
 
-Os parâmetros da função são:
+Esta implementação define um procedimento que encontra alguma raiz de uma função
+$f$. Que tem os seguintes parâmetros:
 
     \begin{itemize}
-            \item Uma função \(f : \mathbb{R} \rightarrow \mathbb{R}\)
-            \item Uma entrada x sendo o chute inicial do ótimo.
+        \item A função $f$ tem como domínio um intervalo
+            \(\mathbb{I} \subseteq \mathbb{R}\) e imagem um valor Real;
+
+        \item E uma entrada $x$ sendo como o `palpite' inicial do ótimo.
     \end{itemize}
 
 
-A função \textit{derive1x1}, recebe como parâmetro uma função e um ponto,
-tendo como retorno, a derivada da função entregue, no ponto especificado.
-Restringindo-se à funções do tipo \(f : \mathbb{R} \rightarrow \mathbb{R}\).
+Além disso, temos o procedimento \textit{derive1x1}, que recebe como parâmetro
+uma função e um valor $x$, tendo como retorno a derivada da função entregue
+no ponto especificado. Restringindo-se à funções do tipo
+\(f : \mathbb{I} \subseteq \mathbb{R} \rightarrow \mathbb{R}\).
 
 
 \subsection{Método do Gradiente Descendente}
 
 \hspace{0.8cm}
-A implementação desse método, exige apenas, que seja definido o cálculo
+A implementação desse método exige apenas que seja definido o cálculo
 da derivada da função objetivo, o valor de $\alpha$, um palpite inicial para
-o valor de x, e a quantidade de iterações desejada. Também, pode ser
-indicado um valor que se refere a diferença dos dois últimos valores
-da sequência \{$x_k$\}, podendo assim, efetuar a parada da execução do
+o valor de x e a quantidade de iterações desejada. Também, pode ser
+indicado um valor que se refere à diferença dos dois últimos valores
+da sequência \{$x_k$\}, podendo assim efetuar a parada da execução do
 método. A seguir, temos a implementação na linguagem de programação
 \textit{C++}:
 
 \vspace{0.2cm}
 \input{./projetos/cpp_gradient1x1.tex}
-
-
 
 
 \textcolor[rgb]{1,0,0}{\section{{O Método de Newton para Várias Variáveis}}}
