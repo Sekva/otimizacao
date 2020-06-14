@@ -84,7 +84,7 @@ Ademais, o conjunto $A$, o qual contém os valores aplicáveis no problema, pode
 respeitar restrições, fazendo com que o campo de respostas do problema, não seja
 contínuo.
 
-\section{{Otimização de Funções à Uma Variável Real}}
+\section{{Otimização de Funções à Uma Variável Real}}\label{otim_uma_var}
 
 \hspace{0.8cm}
 
@@ -92,7 +92,7 @@ Evidentemente, as funções possuem as variáveis dependentes (que representam o
 objeto da otimização) e as variáveis independentes (que suas grandezas podem
 ser selecionadas), podemos denotar que, para a equação
 \begin{equation}
-	y = f(x),
+    y = f(x),
 \end{equation}
 quando buscamos otimizá-la, temos como objetivo encontrar valores, \(x\), que
 quando aplicados à \(f(x)\), temos o mínimo ou máximo valor \textit{y} (seja
@@ -106,7 +106,7 @@ pontos.
 
 Podemos observar um fator interessante; por exemplo,
 quando a função está num ponto máximo, existem duas possibilidades, a primeira,
-a função para de crescer e, em seguinda, torna-se indefinida; e a
+a função para de crescer e, em seguida, torna-se indefinida; e a
 segunda possibilidade, quando a função para de crescer e começa a decrescer.
 Com isso, é importante ressaltar que por definição, quando a derivada (taxa de
 variação) em um ponto é positiva, a função cresce, e quando é negativa a função
@@ -189,7 +189,7 @@ complementares, como por exemplo, se é um ponto de máximo, mínimo ou inflexã
 de modo que, ela determina a concavidade da curva naquele ponto. Como pode ser
 visto na Figura \ref{relacao_primeira_segunda_derivada}. E, de modo construtivo,
 devemos ressaltar que é importante o estudo do gráfico das derivadas de uma
-função, pois é necessariamente através do uso da intrepretação do comportamento
+função, pois é necessariamente através do uso da interpretação do comportamento
 da primeira derivada e/ou da segunda derivada, que obtemos a classificação dos
 pontos críticos seguindo os critérios que são apontados na Figura \ref{relacao_primeira_segunda_derivada}.
 
@@ -252,13 +252,97 @@ insignificantemente mais custosa, e mais precisa. Como vemos no código a seguir
 \input{./projetos/rust_derive1x1_v2.tex}
 
 
-\textcolor[rgb]{1,0,0}{\section{{Otimização de Funções à Várias Variáveis}}}
+\section{{Otimização de Funções à Várias Variáveis}}
 
 \hspace{0.8cm}
 %TODO: Diferenciabilidade
 %TODO: Pontos extremos
 %TODO: Jacobiana, Hensiana, uso do polinomio de tailor para duas variaveis
 %TODO: Aproximação usando o limite
+Quando encontramos a necessidade de trabalhar com mais dimensões, que na
+otimização se traduz no fato de a função trabalhar com mais parâmetros a serem
+otimizados, e ainda a saída da função não necessariamente é um valor único.
+Portanto, agora temos a necessidade de trabalharmos com funções que tanto na
+entrada como na saída, se utilizam-se de vetores contendo um ou mais valores.
+Dai temos a necessidade de pelo menos estender as ferramentas criadas para
+funções em uma variável apenas para tais funções, que formalmente se apresenta
+da seguinte forma:
+
+
+\begin{equation}
+    \begin{array}{ccc}
+        &   g: \mathbb{R}^n \rightarrow \mathbb{R}^m\\
+        &\\
+        &   g(x) = y\\
+        &\\
+        &
+        x = \begin{bmatrix} x_1\\ x_2\\ \vdots\\ x_n \end{bmatrix}
+        y = \begin{bmatrix} y_1\\ y_2\\ \vdots\\ y_m \end{bmatrix}
+
+    \end{array}
+\end{equation}
+
+
+Antes de seguirmos, podemos ajustar um pouco a função para facilitar o
+processo de otimização. Como a saída da função pode ser mais de um único valor,
+torna-se um pouco mais difícil decidir qual a melhor saída entre duas. Sendo
+assim, pode ser muito conveniente reduzir toda a saída em uma única medida e a
+forma mais simples de se fazer isso é pela norma clássica. Portanto, podemos
+definir uma nova função para ser otimizada a partir da original da seguinte
+forma:
+
+
+\begin{equation}
+    \begin{array}{ccc}
+        &   f(x) = ||g(x)|| = ||y||\\
+        &\\
+        &   ||y|| = \sqrt{ y_1^2 + y_2^2 + \hdots + y_m^2}
+    \end{array}
+\end{equation}
+
+Já tendo em mãos um bom formato para as funções que desejamos otimizar, agora
+precisamos definir como se dá o processo de derivação para tais funções. Para
+isto, basta estender o processo que já temos de forma que ainda seja simples
+calcular. Vamos começar imaginando a seguinte situação: temos uma função que
+define um plano, cuja entrada é um vetor de 2 valores e como saída tem um único
+valor (se encaixando no modelo acima mostrado), para que possamos usar o processo
+definido para funções a uma variável, devemos considerar apenas umas secção da
+superfície dessa função, assumindo que todos os elementos do vetor de entrada
+da função são sempre constantes, exceto o elemento referente a dimensão que
+queremos derivar, então obtemos a derivada na dimensão escolhida, se repetirmos
+o processo para o outro elemento do vetor de entrada, temos 2 valores que
+representam as derivadas em cada dimensão na intersecção entre os cortes.
+Cada um desses dois valores são as derivadas parciais da função em relação a
+cada variável. Se considerarmos um vetor formado por essas derivadas parciais,
+temos o que pode ser chamado de gradiente da função. Para o nosso exemplo
+podemos escrever:
+
+\begin{equation}
+    \begin{array}{ccc}
+        &   f\bigg(\begin{bmatrix} x\\ y\\ \end{bmatrix}\bigg) = z\\
+        &\\
+        &   gradiente(f) = \nabla f\bigg(\begin{bmatrix} x\\ y\\ \end{bmatrix}\bigg)\\
+        &\\
+        &   \nabla f\bigg(\begin{bmatrix} x\\ y\\ \end{bmatrix}\bigg) = \begin{bmatrix} \dfp{f}{x}\\ \dfp{f}{y}\\ \end{bmatrix} \\
+    \end{array}
+\end{equation}
+
+Onde:
+
+\begin{equation}
+    \begin{array}{ccc}
+        &   \dfp{f}{x} = \lim\limits_{h \to 0} \frac{f\bigg(\begin{bmatrix} x+h\\ y\\ \end{bmatrix}\bigg) - f\bigg(\begin{bmatrix} x\\ y\\ \end{bmatrix}\bigg)}{h}\\
+        &\\
+        &   \dfp{f}{y} = \lim\limits_{k \to 0} \frac{f\bigg(\begin{bmatrix} x\\ y+k\\ \end{bmatrix}\bigg) - f\bigg(\begin{bmatrix} x\\ y\\ \end{bmatrix}\bigg)}{k}\\
+    \end{array}
+\end{equation}
+
+
+Podemos considerar esse mesmo processo para funções cujos vetores de entrada são
+maiores já que teremos apenas um gradiente com mais derivadas parciais, e uma
+vez tendo em mãos este vetor, basta modificar as entradas até que todos os
+elementos se anulem, como se era feito com funções à uma variável visto na
+seção \ref{otim_uma_var}.
 
 
 

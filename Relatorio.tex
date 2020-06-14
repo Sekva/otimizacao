@@ -4,7 +4,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     %Informações sobre a forma do documento
-    \documentclass [a4paper,12pt,brazil, twoside]{book}
+    \documentclass[a4paper,12pt,brazil, twoside]{book}
     \usepackage{geometry}
 
     %Cabeçalhos e rodapés bonitos
@@ -18,10 +18,10 @@
     \fancyhead[LO]{\small \scshape \nouppercase{\rightmark}}
 
     %Tema escuro k
-    \usepackage[dvipsnames]{xcolor}
-    \definecolor{Mycolor2}{HTML}{2E3440}
-    \pagecolor{Mycolor2}
-    \color{white}
+    %\usepackage[dvipsnames]{xcolor}
+    %\definecolor{Mycolor2}{HTML}{2E3440}
+    %\pagecolor{Mycolor2}
+    %\color{white}
 
     %Codigo
     \usepackage{listings}
@@ -64,7 +64,7 @@
 %    \newtheorem {lema}[teorema]{Lema}
 %    \newtheorem {definicao}[teorema]{Definição}
 
-    \newcommand {\cqd}{\hfill $\blacksquare$ \vspace{0.5cm}}
+    \newcommand{\cqd}{\hfill $\blacksquare$ \vspace{0.5cm}}
 
     \pagestyle{headings}
     \newtheorem{theorem}{Teorema}[chapter]
@@ -90,6 +90,8 @@
     \newtheorem{summary}[theorem]{Summary}
     \newenvironment{proof}[1][\textbf{Demonstração:}\hspace{0.2cm}]{\textit{#1}}{\begin{flushright}\itshape{QED.}\end{flushright}}
 
+    % Macros
+    \newcommand{\dfp}[2]{\frac{\partial#1}{\partial#2}}
 
 \begin{document}
 
