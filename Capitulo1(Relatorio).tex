@@ -255,93 +255,143 @@ insignificantemente mais custosa, e mais precisa. Como vemos no código a seguir
 \section{{Otimização de Funções à Várias Variáveis}}
 
 \hspace{0.8cm}
-%TODO: Diferenciabilidade
-%TODO: Pontos extremos
-%TODO: Jacobiana, Hensiana, uso do polinomio de tailor para duas variaveis
-%TODO: Aproximação usando o limite
 Quando encontramos a necessidade de trabalhar com mais dimensões, que na
 otimização se traduz no fato de a função trabalhar com mais parâmetros a serem
-otimizados, e a saída da função não necessariamente ser um valor único.
-Portanto, agora temos a necessidade de trabalharmos com funções que tanto na
-entrada como na saída, se utilizam de vetores contendo um ou mais valores.
-Dai temos a necessidade de estender as ferramentas criadas para funções em uma
-variável, para funções de várias variáveis, que formalmente se apresenta
-da seguinte forma:
+otimizados, e a saída da função não necessariamente ser um valor real,
+temos a necessidade de trabalharmos com funções que tanto na entrada como na
+saída, se utilizam de vetores que podem conter uma ou mais variáveis. Portanto,
+é necessário estender as ferramentas criadas para funções à uma variável, as
+quais apresentamos na seção \ref{otim_uma_var}, para funções de várias
+variáveis. Que formalmente se apresenta da seguinte forma:
 
+% TODO: Colocar nesse modelo as demais Definições já escritas
+\begin{definition}[Funções Reais à Várias Variáveis]
+    Consideramos uma função real à $n$ variáveis uma função $g$ definida em um
+    subconjunto $D$ de \(\mathbb{R}^n\) com imagem em \(\mathbb{R}^m\) para
+    $n$, $m$ \(\in \mathbb{N^*}\). Isto é,
 
-\begin{equation}
-    \begin{array}{ccc}
-        &   g: \mathbb{R}^n \rightarrow \mathbb{R}^m\\
-        &\\
-        &   g(x) = y\\
-        &\\
-        &
-        x = \begin{bmatrix} x_1\\ x_2\\ \vdots\\ x_n \end{bmatrix}
-        y = \begin{bmatrix} y_1\\ y_2\\ \vdots\\ y_m \end{bmatrix}
+    \begin{equation}
+            g: D \subseteq \mathbb{R}^n \rightarrow \mathbb{R}^m.
+    \end{equation}
 
-    \end{array}
-\end{equation}
+    Consideraremos $g(x)$ = $y$, com o $x=(x_1, x_2, ..., x_n)$
+    e $y=(y_1, y_2, ..., y_n)$.
+
+\end{definition}
+
 
 
 Antes de seguirmos, podemos ajustar um pouco a função para facilitar o
-processo de otimização. Como a saída da função pode ser mais de um único valor,
-torna-se um pouco mais difícil decidir qual a melhor saída. Sendo
-assim, pode ser muito conveniente reduzir toda a saída em uma única medida e a
-forma mais simples de se fazer isso é pela norma clássica. Portanto, podemos
-definir uma nova função para ser otimizada a partir da original da seguinte
-forma:
+processo de otimização. Como a imagem da função pode ser um vetor com
+mais de uma entrada, torna-se um pouco mais difícil decidir qual a melhor
+imagem. Sendo assim, pode ser muito conveniente reduzir o vetor em uma
+única medida. Uma das formas de fazer isto é pela norma euclidiana.
+Portanto, podemos definir uma nova função para ser otimizada a partir da
+original, da seguinte forma:
 
 
 \begin{equation}
-    \begin{array}{ccc}
-        &   f(x) = ||g(x)|| = ||y||\\
-        &\\
-        &   ||y|| = \sqrt{ y_1^2 + y_2^2 + \hdots + y_m^2}
-    \end{array}
+        f(x) = ||g(x)|| = ||y||.\\
+\end{equation}
+        Onde a norma utilizada é dada pela expressão:
+\begin{equation}
+        ||y|| = \sqrt{ y_1^2 + y_2^2 + \hdots + y_m^2}.
 \end{equation}
 
 Já tendo em mãos um bom formato para as funções que desejamos otimizar, agora
-precisamos definir como se dá o processo de derivação para tais funções. Para
-isto, basta estender o processo que já temos, de forma que ainda seja simples
-calcular. Vamos começar imaginando a seguinte situação: temos uma função que
-define um plano, cuja entrada é um vetor de 2 valores e como saída tem um único
-valor (se encaixando no modelo acima mostrado). Para que possamos usar o processo
-definido para funções a uma variável, devemos considerar apenas umas secção da
-superfície dessa função, assumindo que todos os elementos do vetor de entrada
-da função são sempre constantes, exceto o elemento referente a dimensão que
-queremos derivar, então obtemos a derivada na dimensão escolhida, se repetirmos
-o processo para o outro elemento do vetor de entrada, temos 2 valores que
-representam as derivadas em cada dimensão na intersecção entre os cortes.
-Cada um desses dois valores são as derivadas parciais da função em relação a
-cada variável. Se considerarmos um vetor formado por essas derivadas parciais,
-temos o que pode ser chamado de gradiente da função. Para o nosso exemplo
-podemos escrever:
+precisamos definir como se dá o processo de derivação para tais funções.
 
-\begin{equation}
-    \begin{array}{ccc}
-        &   f\bigg(\begin{bmatrix} x\\ y\\ \end{bmatrix}\bigg) = z\\
-        &\\
-        &   gradiente(f) = \nabla f\bigg(\begin{bmatrix} x\\ y\\ \end{bmatrix}\bigg)\\
-        &\\
-        &   \nabla f\bigg(\begin{bmatrix} x\\ y\\ \end{bmatrix}\bigg) = \begin{bmatrix} \dfp{f}{x}\\ \dfp{f}{y}\\ \end{bmatrix} \\
-    \end{array}
-\end{equation}
+% TODO: Provar essa proposição
+Para isto, basta estender o processo que já temos para funções à uma variável,
+de forma que ainda seja simples calcular. Vamos começar imaginando a seguinte
+situação: temos uma função que define um plano, cuja entrada é um vetor de
+duas variáveis e que tem como saída um valor real, de acordo com a definição
+dada acima. Para que possamos usar o processo definido para funções à uma
+variável, devemos considerar apenas uma secção da superfície dessa função.
+Assumindo que todos os elementos do vetor de entrada da função são sempre
+constantes, exceto o elemento referente à dimensão que queremos derivar,
+então obtemos a derivada na dimensão escolhida. Se repetirmos o processo para
+a outra variável do vetor de entrada, teremos então dois vetores que
+representam as derivadas em cada direção das seções de corte.
 
-Onde:
+Os argumentos que fizemos nos mostram como replicar o processo de obtenção do
+que é a derivada pontual de uma função, agora à duas variáveis. A seguir
+apresentamos a definição de derivada parcial:
 
-\begin{equation}
-    \begin{array}{ccc}
-        &   \dfp{f}{x} = \lim\limits_{h \to 0} \frac{f\bigg(\begin{bmatrix} x+h\\ y\\ \end{bmatrix}\bigg) - f\bigg(\begin{bmatrix} x\\ y\\ \end{bmatrix}\bigg)}{h}\\
-        &\\
-        &   \dfp{f}{y} = \lim\limits_{k \to 0} \frac{f\bigg(\begin{bmatrix} x\\ y+k\\ \end{bmatrix}\bigg) - f\bigg(\begin{bmatrix} x\\ y\\ \end{bmatrix}\bigg)}{k}\\
-    \end{array}
-\end{equation}
+\begin{definition}[Derivadas Parciais]
+
+    Considerando uma função real $f$ definida em um subconjunto $D$ $\subseteq$ \(\mathbb{R}^2\). Definimos como as derivadas parciais de $f(x, y)$ os seguintes limites, quando existirem:
+
+    \begin{equation}
+        \begin{array}{ccc}
+            &   \displaystyle {\dfp{f}{x}(x, y) = \lim\limits_{h \to 0} \frac{f(x+h, y) - f(x, y)}{h},}\\
+            &\\
+            &   \displaystyle {\dfp{f}{y}(x, y) = \lim\limits_{h \to 0} \frac{f(x,y+h) - f(x,y)}{h}.}\\
+        \end{array}
+    \end{equation}
+
+\end{definition}
+
+Consideramos que a função é diferenciável no ponto \( (x_0, y_0) \) quando as
+derivadas paciais existirem para tal ponto. Vale ressaltar que ambos os limites
+devem concomitantemente existir. E chamamos essas derivadas como derivada
+parcial em x e em y, respectivamente.
+
+Equivalentemente a como fizemos para funções à uma variável podemos agora
+definir o que seria a derivada de uma função à duas variáveis.
+
+\begin{definition}[Diferencial de $f(x, y)$]
+    Considerando uma função de $f(x, y)$ diferenciável, definimos o diferencial
+    de $f(x, y)$ como sendo:
+
+    \begin{equation}
+        Df = \dfp{f}{x} \cdot dx + \dfp{f}{y} \cdot dy.
+    \end{equation}
+
+\end{definition}
+
+Observe que uma condição \textit{sine qua non} para que a função seja
+diferenciável é que exista o diferencial. Pois isto implica na existência das
+derivadas paciais que são coeficientes da combinação linear que define o
+diferencial.
+
+Estamos agora em posição de definir um instrumento de grande valor para a
+análise de otimização de funções reais a duas variáveis, que denominaremos de
+gradiente de $f(x, y)$.
+
+\begin{definition}[Gradiente de $f(x, y)$]
+
+    Considerando uma função de $f(x, y)$ diferenciável e o diferencial como
+    definido acima, o vetor gradiente de $f(x, y)$ é aquele que satisfaz:
+
+    \begin{equation}
+        Df \cdot v = \left\langle \nabla f, v \right\rangle.
+    \end{equation}
+
+    Vemos que o $\nabla f(x, y)$ = $\left(\dfp{f}{x}, \dfp{f}{y}\right)$.
 
 
+\end{definition}
+
+    %TODO: Mostrar uma proposição (mostrar que o gradiente é a direção em que a função cesce ou decresce mais rapidamente [usar cos talvez])
+    \begin{proposition}
+        TODO: $\nabla$ é a direção de otimalidade de função
+    \end{proposition}
+
+% TODO: Definir pontos críticos
+% TODO: Definir curvas de nível
+% TODO: Definir matriz jacobiana (Falar da J nula)
+% TODO: Definir matriz Hessiana (Falar da H nula)
+% TODO: Classificar pontos críticos a partir da Hessiana
+% TODO: Ver teorema espectral
+% Pontos criticos = entradas do gradiente nulas; jacobiana nula=pontos criticos
+% Dica: uso do polinomio de taylor para duas variaveis
+
+% TODO: Isso aqui está muito resumido, aprimorar isso
 Podemos considerar esse mesmo processo para funções cujos vetores de entrada são
 maiores, já que teremos apenas um gradiente com mais derivadas parciais, e uma
 vez tendo em mãos este vetor, basta modificar as entradas até que todos os
-elementos se anulem, como se era feito com funções à uma variável visto na
+elementos se anulem, como era feito com funções à uma variável visto na
 seção \ref{otim_uma_var}, sendo esses valores de entrada, o resultado do
 processo de otimização.
 
