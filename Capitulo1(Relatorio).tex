@@ -261,11 +261,11 @@ insignificantemente mais custosa, e mais precisa. Como vemos no código a seguir
 %TODO: Aproximação usando o limite
 Quando encontramos a necessidade de trabalhar com mais dimensões, que na
 otimização se traduz no fato de a função trabalhar com mais parâmetros a serem
-otimizados, e ainda a saída da função não necessariamente é um valor único.
+otimizados, e a saída da função não necessariamente ser um valor único.
 Portanto, agora temos a necessidade de trabalharmos com funções que tanto na
-entrada como na saída, se utilizam-se de vetores contendo um ou mais valores.
-Dai temos a necessidade de pelo menos estender as ferramentas criadas para
-funções em uma variável apenas para tais funções, que formalmente se apresenta
+entrada como na saída, se utilizam de vetores contendo um ou mais valores.
+Dai temos a necessidade de estender as ferramentas criadas para funções em uma
+variável, para funções de várias variáveis, que formalmente se apresenta
 da seguinte forma:
 
 
@@ -285,7 +285,7 @@ da seguinte forma:
 
 Antes de seguirmos, podemos ajustar um pouco a função para facilitar o
 processo de otimização. Como a saída da função pode ser mais de um único valor,
-torna-se um pouco mais difícil decidir qual a melhor saída entre duas. Sendo
+torna-se um pouco mais difícil decidir qual a melhor saída. Sendo
 assim, pode ser muito conveniente reduzir toda a saída em uma única medida e a
 forma mais simples de se fazer isso é pela norma clássica. Portanto, podemos
 definir uma nova função para ser otimizada a partir da original da seguinte
@@ -302,10 +302,10 @@ forma:
 
 Já tendo em mãos um bom formato para as funções que desejamos otimizar, agora
 precisamos definir como se dá o processo de derivação para tais funções. Para
-isto, basta estender o processo que já temos de forma que ainda seja simples
+isto, basta estender o processo que já temos, de forma que ainda seja simples
 calcular. Vamos começar imaginando a seguinte situação: temos uma função que
 define um plano, cuja entrada é um vetor de 2 valores e como saída tem um único
-valor (se encaixando no modelo acima mostrado), para que possamos usar o processo
+valor (se encaixando no modelo acima mostrado). Para que possamos usar o processo
 definido para funções a uma variável, devemos considerar apenas umas secção da
 superfície dessa função, assumindo que todos os elementos do vetor de entrada
 da função são sempre constantes, exceto o elemento referente a dimensão que
@@ -339,10 +339,11 @@ Onde:
 
 
 Podemos considerar esse mesmo processo para funções cujos vetores de entrada são
-maiores já que teremos apenas um gradiente com mais derivadas parciais, e uma
+maiores, já que teremos apenas um gradiente com mais derivadas parciais, e uma
 vez tendo em mãos este vetor, basta modificar as entradas até que todos os
 elementos se anulem, como se era feito com funções à uma variável visto na
-seção \ref{otim_uma_var}.
+seção \ref{otim_uma_var}, sendo esses valores de entrada, o resultado do
+processo de otimização.
 
 
 
