@@ -51,15 +51,16 @@ para todo \(x \in A\).
 \vspace{\baselineskip}
 Com isso, podemos agora entender como esse processo pode ser custoso. Iniciando
 com o fato de que existem os pontos máximos e mínimos (pontos
-críticos\footnote{Iremos denotar como pontos críticos apenas aqueles onde a função tem derivada e esta se anula.}), locais
-e globais, na imagem das funções. Sendo os pontos críticos locais, aqueles que
-não são os menores ou maiores valores para a minimização e maximização,
-respectivamente. E os pontos globais, aqueles que representam o menor ou maior
-valor na imagem das funções, para a minimização e maximização, respectivamente.
+críticos\footnote{Iremos denotar como pontos críticos apenas aqueles onde a
+função tem derivada e esta se anula.}), locais e globais, na imagem das
+funções. Sendo os pontos críticos locais, aqueles que não são os menores ou
+maiores valores para a minimização e maximização, respectivamente. E os pontos
+globais, aqueles que representam o menor ou maior valor na imagem das funções,
+para a minimização e maximização, respectivamente.
 
-Criando, desse modo, uma certa incerteza ao encontrar um valor crítico numa função,
-já que, é estritamente difícil saber se o ponto crítico encontrado é local ou
-global. Como pode-se perceber na Figura
+Criando, desse modo, uma certa incerteza ao encontrar um valor crítico numa
+função, já que, é estritamente difícil saber se o ponto crítico encontrado é
+local ou global. Como pode-se perceber na Figura
 \ref{grafico_local_global_pontosCriticos}.
 
 \begin{figure}[h]
@@ -112,14 +113,14 @@ Com isso, é importante ressaltar que por definição, quando a derivada (taxa d
 variação) em um ponto é positiva, a função cresce, e quando é negativa a função
 decresce. Conclui-se que, quando a taxa de variação é zero, a função ou para de
 crescer ou de decrescer, o que configura um ponto de máximo ou de mínimo. Mas
-também, é quando podo ocorrer o que denominamos ponto de sela (é um
+também, é quando pode ocorrer o que denominamos ponto de sela (é um
 comportamento errático da função, que precisa de uma análise mais refinada). Ou
 em última instância, quando a função é constante.
 
 Com o uso da derivada, podemos pensar num método de otimização bastante simples,
 considerando \(f(x)\) a função que queremos otimizar e \(f'(x)\) sua função
-derivada, podemos dizer que o conjunto $O$, abaixo definido, possui todos os ótimos locais e
-globais de \(f(x)\):
+derivada, podemos dizer que o conjunto $O$, abaixo definido, possui todos os
+ótimos locais e globais de \(f(x)\):
 
 \begin{equation}
     O := \{f(x) | f'(x) = 0\}.
@@ -143,14 +144,27 @@ acabamos por obter o máximo e mínimo de \(f(x)\):
 Então podemos perceber três problemas:
 
 \begin{itemize}
-  \item Determinar como encontrar os pontos onde a derivada se anule, isto é, os pontos críticos;
+  \item Determinar como encontrar os pontos onde a derivada se anule, isto é,
+    os pontos críticos;
   \item Determinar se temos de fato todos os pontos;
   \item Classificação dos pontos críticos, que nos revela quais são os máximos e
   os mínimos, e, ademais, da sua relevância quanto a serem locais ou globais.
 \end{itemize}
 
-Consideraremos, por agora, apenas o problema de encontrar os pontos críticos.
 
+\begin{definition}[Pontos Críticos]
+    Considerando $f(x)$ como a função objetivo, os pontos críticos dessa função
+    são definidos como pontos onde a função é diferenciável e que a derivada é
+    anulada. Desse modo, dizemos que o ponto $x$ é crítico quando:
+
+    \begin{equation}
+        f'(x) = 0; x \in A.
+    \end{equation}
+
+\end{definition}
+
+
+Consideraremos, por agora, apenas o problema de encontrar os pontos críticos.
 
 A taxa de variação de uma função, \(y=f(x)\), em relação a \(x\), é dada pela
 relação \(\Delta y / \Delta x\). Sendo o cálculo da derivada
@@ -281,13 +295,12 @@ variáveis. Que formalmente se apresenta da seguinte forma:
 
 
 
-Antes de seguirmos, podemos ajustar um pouco a função para facilitar o
-processo de otimização. Como a imagem da função pode ser um vetor com
-mais de uma entrada, torna-se um pouco mais difícil decidir qual a melhor
-imagem. Sendo assim, pode ser muito conveniente reduzir o vetor em uma
-única medida. Uma das formas de fazer isto é pela norma euclidiana.
-Portanto, podemos definir uma nova função para ser otimizada a partir da
-original, da seguinte forma:
+Antes de seguirmos, podemos ajustar um pouco a função para facilitar o processo
+de otimização. Como a imagem da função pode ser um vetor com mais de uma
+entrada, torna-se um pouco mais difícil decidir qual a melhor imagem. Sendo
+assim, pode ser muito conveniente reduzir o vetor em uma única medida. Uma das
+formas de fazer isto é pela norma euclidiana. Portanto, podemos definir uma
+nova função para ser otimizada a partir da original, da seguinte forma:
 
 
 \begin{equation}
@@ -309,10 +322,10 @@ duas variáveis e que tem como saída um valor real, de acordo com a definição
 dada acima. Para que possamos usar o processo definido para funções à uma
 variável, devemos considerar apenas uma secção da superfície dessa função.
 Assumindo que todos os elementos do vetor de entrada da função são sempre
-constantes, exceto o elemento referente à dimensão que queremos derivar,
-então obtemos a derivada na dimensão escolhida. Se repetirmos o processo para
-a outra variável do vetor de entrada, teremos então dois vetores que
-representam as derivadas em cada direção das seções de corte.
+constantes, exceto o elemento referente à dimensão que queremos derivar, então
+obtemos a derivada na dimensão escolhida. Se repetirmos o processo para a outra
+variável do vetor de entrada, teremos então dois vetores que representam as
+derivadas em cada direção das seções de corte.
 
 Os argumentos que fizemos nos mostram como replicar o processo de obtenção do
 que é a derivada pontual de uma função, agora à duas variáveis. A seguir
@@ -385,7 +398,6 @@ gradiente de $f(x, y)$.
         TODO: $\nabla$ é a direção de otimalidade de função
     \end{proposition}
 
-% TODO: Definir pontos críticos
 % TODO: Definir curvas de nível
 % TODO: Definir matriz jacobiana (Falar da J nula)
 % TODO: Definir matriz Hessiana (Falar da H nula)
@@ -394,15 +406,17 @@ gradiente de $f(x, y)$.
 % Pontos criticos = entradas do gradiente nulas; jacobiana nula=pontos criticos
 % Dica: uso do polinomio de taylor para duas variaveis
 
-% TODO: Isso aqui está muito resumido, aprimorar isso
-Podemos considerar esse mesmo processo para funções cujos vetores de entrada são
-maiores, já que teremos apenas um gradiente com mais derivadas parciais, e uma
-vez tendo em mãos este vetor, basta modificar as entradas até que todos os
-elementos se anulem, como era feito com funções à uma variável visto na
-seção \ref{otim_uma_var}, sendo esses valores de entrada, o resultado do
-processo de otimização.
+Podemos considerar esse mesmo processo para função cujos vetores de entrada são
+maiores, de modo que o gradiente será representado por uma maior quantidade de
+derivadas parciais. Com isso, o processo de otimização é similar ao que foi
+visto na seção \ref{otim_uma_var}, sofrendo apenas uma adaptação quanto a
+quantidade de variáveis que precisam ser modificadas. Ademais, o dado processo
+ainda tem como objetivo encontrar valores para essas variáveis de entrada, que
+cada vez mais minimizam o vetor gradiente, resultando assim numa aproximação
+para um ponto crítico daquela função.
 
-
-
+E desse modo, é interessante ressaltar que a norma do vetor gradiente é reduzida
+cada vez mais em relação a distância do ponto crítico. Ou seja, quanto mais
+próximo do ponto crítico, menor será a norma do vetor.
 
 %
