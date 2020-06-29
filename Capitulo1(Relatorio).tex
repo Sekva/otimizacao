@@ -399,7 +399,6 @@ gradiente de $f(x, y)$.
     \end{proposition}
 
 % TODO: Definir curvas de nível
-% TODO: Definir matriz jacobiana (Falar da J nula)
 % TODO: Definir matriz Hessiana (Falar da H nula)
 % TODO: Classificar pontos críticos a partir da Hessiana
 % TODO: Ver teorema espectral
@@ -418,5 +417,48 @@ para um ponto crítico daquela função.
 E desse modo, é interessante ressaltar que a norma do vetor gradiente é reduzida
 cada vez mais em relação a distância do ponto crítico. Ou seja, quanto mais
 próximo do ponto crítico, menor será a norma do vetor.
+
+Com a definição de gradiente posta, podemos ainda definir o que seria o
+semelhante ao gradiente para as funções mais gerais, como
+\( g: \mathbb{R}^n \rightarrow \mathbb{R}^m \),
+e obtendo uma noção mais precisa sobre as ferramentas que temos.
+
+
+\begin{definition}[Matriz Jacobiana]
+    Seja \( g(x) \) uma função vetorial definida em um subconjunto
+    \( D \subseteq \mathbb{R}^n \), \( x \in D \),
+    e sua imagem o \( \mathbb{R}^m \), podemos escrever
+    \( g(x) = (g_1(x), g_2(x), ..., g_m(x)) \). Sabemos que \( g_i(x) \) é
+    uma função de \( \mathbb{R}^n \rightarrow \mathbb{R}, i = 1, 2, ... m \),
+    considerando o gradiente como uma matriz linha, definimos a Matriz
+    Jacobiana de \(g\) em \(x\) como:
+
+    \begin{equation}
+        J(g(x)) = \begin{bmatrix}
+                    \nabla g_1(x) \\
+                    \nabla g_2(x) \\
+                    \vdots \\
+                    \nabla g_n(x)
+                  \end{bmatrix}.
+    \end{equation}
+
+    Ou ainda, se expandirmos o gradiente, temos a Matriz Jacobiana \( m \times n \)
+    completa com as seguintes entradas:
+
+    \begin{equation}
+        J(g(x)) = \begin{bmatrix}
+                    \dfp{g_1}{x_1} & \dfp{g_1}{x_2} & \hdots & \dfp{g_1}{x_n}\\
+                    \\
+                    \dfp{g_2}{x_1} & \dfp{g_2}{x_2} & \hdots & \dfp{g_2}{x_n}\\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    \dfp{g_m}{x_1} & \dfp{g_m}{x_2} & \hdots & \dfp{g_m}{x_n}\\
+                  \end{bmatrix}.
+    \end{equation}
+
+
+\end{definition}
+
+%TODO: falar da jacobiana nula
+
 
 %
