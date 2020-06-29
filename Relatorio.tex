@@ -1,52 +1,93 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Documento Principal Geometria Analítica
-% Gersonilo Oliveira da Silva
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Relatório Final - Projeto de Pesquisa
+% Métodos de Otimização
+% Baltz & Machado
+% Documento Principal
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    %Informações sobre a forma do documento
+    %%%
+    % Informações sobre a forma do documento
+    %%%
     \documentclass[a4paper,12pt,brazil, twoside]{book}
+
+    %%%
+    % Facilidade de mudar medidas da pagina
+    %%%
     \usepackage{geometry}
 
-    %Cabeçalhos e rodapés bonitos
+    %%%
+    % Cabeçalhos e rodapés bonitos
+    %%%
     \usepackage{fancyhdr}
-    \pagestyle{fancy}
+    \pagestyle{fancy} % Usar o pagestyle do pacote
     \fancyhf{}
     \fancyhead{}
-    \fancyhead[LE]{\scshape \thepage}
-    \fancyhead[RO]{\scshape \thepage}
-    \fancyhead[RE]{\small \scshape \nouppercase{Baltazar e Machado}}
-    \fancyhead[LO]{\small \scshape \nouppercase{\rightmark}}
+    % L = Left(Esquerda)
+    % R = Right(Direita)
+    % E = Even(Pagina par)
+    % O = Odd(Pagina impar)
+    \fancyhead[LE]{\scshape \thepage} % Numero da pagina no lado esquerdo em paginas pares
+    \fancyhead[RO]{\scshape \thepage} % Numero da pagina no lado direito em paginas impares
+    \fancyhead[RE]{\small \scshape \nouppercase{Baltazar e Machado}} % Nomes no lado direito em paginas pares
+    \fancyhead[LO]{\small \scshape \nouppercase{\rightmark}} % Titulo da subseção no lado esquerdo em paginas impares
 
-    %Tema escuro k
+    %%%
+    % Pacote pra mudar as cores das paginas
+    %%%
     \usepackage[dvipsnames]{xcolor}
-    \definecolor{Mycolor2}{HTML}{2E3440}
-    \pagecolor{Mycolor2}
-    \color{white}
+    \definecolor{corbunita}{HTML}{2E3440} % Define uma cor rrggbb
+    \pagecolor{corbunita} % Seta a cor da pagina com a cor definida
+    \color{white} % Seta a cor do texto padrão como branco
 
-    %Codigo
+    %%%
+    % Pacote pra usar os trechos de codigo
+    %%%
     \usepackage{listings}
 
-    % utf8 patrãozão
+    %%%
+    % Usar utf8 como método de caracteres
+    %%%
     \usepackage[utf8]{inputenc}
+
+    %%%
+    % Usar multiplas colunas (nem tá sendo usado)
+    %%%
     \usepackage{multicol}
 
+    %%%
     % Indicar idioma do texto
+    %%%
     \usepackage[brazil]{babel}
 
+    %%%
     %Colocar URL
+    %%%
     \usepackage{hyperref}
 
+    %%%
+    % Simbolos e notações matemáticas
+    %%%
     \usepackage{amssymb,amscd,latexsym}
     \usepackage{amsmath}
+
+    %%%
+    % Mexer em cores no geral
+    %%%
     \usepackage{color}
+
+    %%%
+    % Resolve problemas pra incluir imagens as vezes
+    %%%
     \usepackage{epsfig}
 
+    %%%
     % Tamanho do texto de descrição das imagens
+    %%%
     \usepackage[font=footnotesize,labelfont=bf]{caption}
 
-    %\usepackage[dvips]{graphicx}
-    %\usepackage{srcltx}
-
+    %%%
+    % Configurações de tamanhos na pagina
+    %%%
     \setlength{\oddsidemargin}{0.46cm}
     \setlength{\evensidemargin}{0.46cm}
     \setlength{\textwidth}{15cm}
@@ -56,18 +97,29 @@
     \setlength{\textheight}{24cm}
     \setlength{\parindent}{1.0cm}
     \renewcommand{\baselinestretch}{1.1}
+
+
+    %%%
+    % Inicia a contagem de paginas usando numeros arabicos começando do 1
+    %%%
     \pagenumbering{arabic} \setcounter{page}{1}
-%    \setlength{\parskip}{0.2 cm}
 
-%    \newtheorem {teorema}{Teorema}[chapter]
-%    \newtheorem {proposicao}[teorema]{Proposição}
-%    \newtheorem {lema}[teorema]{Lema}
-%    \newtheorem {definicao}[teorema]{Definição}
-
+    %%%
+    % Cria um comando pra criar um quadradinho (usado no final de provas)
+    %%%
     \newcommand{\cqd}{\hfill $\blacksquare$ \vspace{0.5cm}}
 
-    \pagestyle{headings}
+
+    % Cria um ambiente de exmplo com contagem simples
+    % \begin{example}\end{example}, cada um desses conta pro documento inteiro
+    \newtheorem{example}{Exemplo}
+
+    % Cria um ambiente que os indices são parte do capitulo (1.8 = capitulo 1 ambiente 8)
+    % E compartilha o indice com as definições
+
     \newtheorem{theorem}{Teorema}[chapter]
+    \newtheorem{lemma}{Lema}[chapter]
+    \newtheorem{remark}{Observação}[chapter]
     \newtheorem{acknowledgement}[theorem]{Acknowledgement}
     \newtheorem{algorithm}[theorem]{Afirmação}
     \newtheorem{axiom}[theorem]{Axioma}
@@ -79,25 +131,25 @@
     \newtheorem{corollary}[theorem]{Corolário}
     \newtheorem{criterion}[theorem]{Criterion}
     \newtheorem{definition}[theorem]{Definição}
-    \newtheorem{example}{Exemplo}
     \newtheorem{exercise}[theorem]{Exercício}
-    \newtheorem{lemma}{Lema}[chapter]
     \newtheorem{notation}[theorem]{Notation}
     \newtheorem{problem}[theorem]{Problem}
     \newtheorem{proposition}[theorem]{Proposição}
-    \newtheorem{remark}{Observação}[chapter]
-    \newtheorem{solution}[theorem]{Solution}
     \newtheorem{summary}[theorem]{Summary}
+    \newtheorem{solution}[theorem]{Solution}
     \newenvironment{proof}[1][\textbf{Demonstração:}\hspace{0.2cm}]{\textit{#1}}{\begin{flushright}\itshape{QED.}\end{flushright}}
 
+    %%%
     % Macros
-    \newcommand{\dfp}[2]{\displaystyle{\frac{\partial#1}{\partial#2}}}
+        % Derivada parcial
+        \newcommand{\dfp}[2]{\displaystyle{\frac{\partial#1}{\partial#2}}}
+    %%%
 
 \begin{document}
 
-    \pagestyle{headings}
+    \pagestyle{headings} % A partir daqui usa o estilo de introduções.
     \include{Capa(Relatorio)}
-    \renewcommand{\baselinestretch}{1.0} \thispagestyle{plain} \tableofcontents
+    \renewcommand{\baselinestretch}{1.0} \thispagestyle{plain} \tableofcontents %Cria o indice
     %\include{Introducao(Relatorio)} TODO: colocar de volta quando terminar
     \pagestyle{fancy} % a partir daqui usar os cabeçalhos e rodapés bonitos
     \include{Capitulo1(Relatorio)}
