@@ -9,7 +9,7 @@
 \chapter{\Large{Métodos Matemáticos de Otimização}}\label{chp:1}
 
 
-\section{{O Conceito de Otimização}}
+\section{{Sobre o Conceito de Otimização}}
 
 \hspace{0.8cm}
 Diz-se otimização, o processo que tem como objetivo encontrar condições que
@@ -17,50 +17,44 @@ minimizam ou maximizam algo (seja energia, tempo, dinheiro, etc). Sendo este,
 muitas vezes um trabalho árduo, custoso.
 
 Dessa maneira, na matemática, tal processo é amplamente utilizado quando
-busca-se valores em conjunto um \textit{A} (que pode ter restrições), com o
+busca-se valores em um conjunto \( A \) (que pode ter restrições), com o
 objetivo de encontrar uma solução ótima (a melhor resposta para o problema),
-aplicando os valores de \textit{A} em uma função objetivo predefinida.
-
-Podendo assim, ser representada da forma como a seguir.
-
-Dada uma função
-\begin{equation}
-    f : A \subseteq \mathbb{R} \rightarrow \mathbb{R}.
-\end{equation}
+aplicando os valores de \( A \) em uma função objetivo predefinida.
 
 
-A maximização pode ser definida como; a busca pelo elemento
-\(x^* \in A\), que satisfaz:
+\begin{definition}[Conceito de otimização]
+    Dada uma função  \( f : A \subseteq \mathbb{R} \rightarrow \mathbb{R}. \)
+    Onde \( A \) é um conjunto  conexo da reta real.
+    Dizemos que \( x^* \in A \) é um ótimo para a função \( f \) se alguma das
+    condições abaixo forem satisfeitas:
+    \begin{enumerate}
+        \item Se \( f(x^*) \leq f(x) \), para todo \( x \in A \);
+        \item Se \( f(x^*) \geq f(x) \), para todo \( x \in A \).
+    \end{enumerate}
 
-\begin{equation}
-    f(x^*) \geq f(x),
-\end{equation}
+    E diremos que \( x^* \) é uma solução ótima para o problema de otimização da
+    função \( f(x) \) restrito ao conjunto \( A \).
 
-para todo \(x \in A\).
+\end{definition}
 
+Podemos então esclarecer a significância das condições satisfeitas por um ótimo.
+Diremos que \( x^* \) é um \textit{máximo de \( f(x) \)} quando a condição
+\textit{1} for satisfeita e \( x^* \) será dito um \textit{mínimo de \( f(x) \)}
+quando a condição \textit{2} for satisfeita. Além disso, o conceito de conexo
+inserido no contexto da definição revela a intrínsica necessidade de controle
+sobre os valores de entrada. Um exemplo de conjunto conexo seria um intervalo
+na reta.
 
-A minimização pode ser definida como; a busca pelo elemento \(x^* \in A\),
-que satisfaz:
+Agora vamos tentar entender como esse processo pode ser custoso. A princípio
+temos o fato de que uma função \( f(x) \) pode assumir seus pontos máximos e
+mínimos que podem ser locais ou globais. Devemos compreender os pontos máximos
+(mínimos) como \textit{ótimos locais} como sendo aqueles que não
+são os maiores (menores) valores para a maximização (minimização). E como
+\textit{ótimos globais} aqueles que são os maiores (menores)
+valores para a maximização (minimização).
 
-\begin{equation}
-    f(x^*) \leq f(x),
-\end{equation}
-
-para todo \(x \in A\).
-
-\vspace{\baselineskip}
-Com isso, podemos agora entender como esse processo pode ser custoso. Iniciando
-com o fato de que existem os pontos máximos e mínimos (pontos
-críticos\footnote{Iremos denotar como pontos críticos apenas aqueles onde a
-função tem derivada e esta se anula.}), locais e globais, na imagem das
-funções. Sendo os pontos críticos locais, aqueles que não são os menores ou
-maiores valores para a minimização e maximização, respectivamente. E os pontos
-globais, aqueles que representam o menor ou maior valor na imagem das funções,
-para a minimização e maximização, respectivamente.
-
-Criando, desse modo, uma certa incerteza ao encontrar um valor crítico numa
-função, já que, é estritamente difícil saber se o ponto crítico encontrado é
-local ou global. Como pode-se perceber na Figura
+O custo a que nos referimos é devido a incerteza de classificar, em geral, pontos que
+satisfaçam essas tais características. Como se pode perceber na Figura
 \ref{grafico_local_global_pontosCriticos}.
 
 \begin{figure}[h]
@@ -74,21 +68,21 @@ local ou global. Como pode-se perceber na Figura
     \label{grafico_local_global_pontosCriticos}
 \end{figure}
 
-Como na grande maioria dos casos não é possível conhecer antecipadamente todo
-o espaço gerado pela função, a busca pelo ótimo pode resultar em pontos
-críticos locais. Donde, dependendo do problema, tais resultados chegam a ser
-satisfatórios. No entanto, quando o objetivo é estritamente encontrar os máximos
-ou mínimos globais, o trabalho necessário acaba sendo mais custoso, pelo fato de
-que há a incerteza da existência de mais pontos na grande maioria dos problemas.
+Como na grande maioria dos casos não é possível conhecer antecipadamente todo o
+conjunto dos pontos imagem, a busca pelo ótimo pode resultar em ótimos locais.
+A depender do problema, tais resultados chegam a ser satisfatórios. No entanto,
+quando o objetivo é estritamente encontrar os máximos ou mínimos globais, o
+trabalho necessário acaba sendo mais custoso, pelo fato
+de que há a incerteza da existência de tais pontos na grande maioria dos
+problemas.
 
-Ademais, o conjunto $A$, o qual contém os valores aplicáveis no problema, podem
-respeitar restrições, fazendo com que o campo de respostas do problema, não seja
-contínuo.
+Ademais, o conjunto $A$, o qual contém os valores aplicáveis na função, pode
+ser definido através de restrições, fazendo com que o gráfico da função não
+seja contínuo.
 
 \section{{Otimização de Funções à Uma Variável Real}}\label{otim_uma_var}
 
 \hspace{0.8cm}
-
 Evidentemente, as funções possuem as variáveis dependentes (que representam o
 objeto da otimização) e as variáveis independentes (que suas grandezas podem
 ser selecionadas), podemos denotar que, para a equação
